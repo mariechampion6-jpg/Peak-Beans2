@@ -3,50 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peak & Beans | Bordeaux | Bio-Hacking & Café</title>
+    <title>Peak & Beans | Cultivez votre énergie</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --forest: #2D5A27;
+            --earth: #8B5A2B;
+            --stone: #F7F5F2;
+            --ink: #1A1C1A;
+            --leaf-light: #A7C957;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F7F5F2;
-            color: #1A1C1A;
+            background-color: var(--stone);
+            color: var(--ink);
             overflow-x: hidden;
         }
         .font-serif { font-family: 'Playfair Display', serif; }
+        
         .glass-panel {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(45, 90, 39, 0.08);
         }
+
         .gradient-text {
-            background: linear-gradient(135deg, #2D5A27, #8B5A2B);
+            background: linear-gradient(135deg, var(--forest), var(--earth));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .zen-blob {
+
+        .topo-bg {
             position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
+            inset: 0;
             z-index: -1;
-            opacity: 0.12;
-            animation: blob-drift 25s infinite alternate ease-in-out;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg width='800' height='800' viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 200c100-50 200 50 400 0s300-100 400 0M0 400c150 50 250-100 400 0s250 100 400 0M0 600c100 100 300-50 400 0s300 50 400 0' fill='none' stroke='%232D5A27' stroke-width='1'/%3E%3C/svg%3E");
+            background-size: 1200px;
+            animation: topo-drift 60s linear infinite;
         }
-        @keyframes blob-drift {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(120px, 80px) scale(1.2); }
+        @keyframes topo-drift {
+            from { background-position: 0 0; }
+            to { background-position: 1200px 1200px; }
         }
-        .loading-spinner {
-            border: 2px solid rgba(45, 90, 39, 0.1);
-            border-top: 2px solid #2D5A27;
-            border-radius: 50%;
-            width: 2rem;
-            height: 2rem;
-            animation: spin 1s linear infinite;
+
+        .image-container {
+            background: #e5e1da;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .modal-enter { animation: modal-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes modal-fade-in { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+        .card-hover:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 30px 60px rgba(45, 90, 39, 0.1); 
+        }
+
+        .loading-shimmer {
+            background: linear-gradient(90deg, #e5e1da 25%, #f0ede8 50%, #e5e1da 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+        .organic-stroke {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 3s ease-in-out forwards;
+        }
+        @keyframes dash { to { stroke-dashoffset: 0; } }
     </style>
     <script type="importmap">
     {
@@ -57,122 +85,254 @@
     </script>
 </head>
 <body>
-    <div class="zen-blob w-[600px] h-[600px] bg-[#2D5A27] -top-20 -left-20"></div>
-    <div class="zen-blob w-[500px] h-[500px] bg-[#8B5A2B] bottom-0 right-0" style="animation-delay: -7s;"></div>
+    <div class="topo-bg"></div>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 px-8 py-6 flex justify-between items-center bg-[#F7F5F2]/80 backdrop-blur-2xl border-b border-black/5">
-        <div class="flex items-center space-x-2">
-            <span class="font-serif font-bold text-xl tracking-tighter uppercase">Peak <span class="text-[#8B5A2B]">&</span> Beans</span>
+    <nav class="fixed top-0 left-0 right-0 z-50 px-8 py-4 flex justify-between items-center bg-[#F7F5F2]/90 backdrop-blur-xl border-b border-black/5">
+        <div class="flex items-center space-x-4">
+            <svg width="40" height="40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10">
+                <path d="M100 20L160 140H40L100 20Z" fill="#2D5A27" fill-opacity="0.1"/>
+                <path d="M100 20L145 140M100 20L55 140" stroke="#2D5A27" stroke-width="2"/>
+                <path d="M130 80C150 80 170 110 170 140" stroke="#2D5A27" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="85" cy="130" r="8" fill="#8B5A2B"/>
+                <circle cx="105" cy="145" r="10" fill="#8B5A2B"/>
+                <circle cx="125" cy="135" r="7" fill="#8B5A2B"/>
+            </svg>
+            <div class="flex flex-col">
+                <span class="font-serif font-bold text-lg tracking-tight uppercase leading-none">Peak <span class="text-[#8B5A2B]">&</span> Beans</span>
+                <span class="text-[7px] font-bold tracking-[0.4em] uppercase text-[#2D5A27] mt-1 italic">Cultivez votre énergie</span>
+            </div>
         </div>
         <div class="hidden lg:flex space-x-12 text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-500">
-            <a href="#lab" class="hover:text-[#2D5A27] transition-all">Recovery Lab</a>
-            <a href="#bar" class="hover:text-[#2D5A27] transition-all">Bio-Bar</a>
-            <a href="#tarifs" class="hover:text-[#2D5A27] transition-all">Tarifs</a>
+            <a href="#tarifs" class="hover:text-[#2D5A27] transition-all">Services</a>
+            <a href="#lab" class="hover:text-[#2D5A27] transition-all">Expérience</a>
+            <a href="#abonnements" class="hover:text-[#2D5A27] transition-all">Le Cercle</a>
         </div>
-        <button onclick="openModal('Candidature Franchise')" class="bg-[#2D5A27] text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-[#2D5A27]/20 hover:bg-[#1B4332] transition-all">
-            Candidater
+        <button onclick="openModal('Contact')" class="bg-[#2D5A27] text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-xl shadow-[#2D5A27]/20 hover:scale-105 transition-all">
+            Nous rejoindre
         </button>
     </nav>
 
-    <!-- Hero -->
-    <header class="relative pt-64 pb-24 px-8 lg:px-24 max-w-7xl mx-auto text-center">
-        <div class="inline-flex items-center space-x-3 bg-[#2D5A27]/5 px-6 py-2 rounded-full mb-12 border border-[#2D5A27]/10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D5A27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            <span class="text-[10px] font-bold tracking-[0.4em] uppercase text-[#2D5A27]">Bordeaux - Darwin Eco-système</span>
+    <!-- Hero Section -->
+    <header class="relative pt-64 pb-32 px-8 lg:px-24 max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center space-x-3 bg-[#2D5A27]/5 px-6 py-2 rounded-full mb-12 border border-[#2D5A27]/10 animate-fade-in">
+            <span class="text-[9px] font-bold tracking-[0.5em] uppercase text-[#2D5A27]">Bordeaux • Darwin Eco-système</span>
         </div>
-        <h1 class="text-7xl md:text-9xl font-serif mb-12 leading-[0.9] text-[#1A1C1A] italic">
+        
+        <h1 class="text-7xl md:text-[10rem] font-serif mb-8 leading-[0.85] text-[#1A1C1A] italic">
             Cultivez votre <br />
             <span class="gradient-text not-italic font-bold">énergie.</span>
         </h1>
-        <p class="text-xl text-neutral-600 max-w-2xl mx-auto mb-16 font-light">
-            Le premier Bio-Hacking Lab & Specialty Coffee de Bordeaux. <br />
-            <span class="text-[#2D5A27] font-medium italic">Performance, Sérénité, Longévité.</span>
+        
+        <p class="text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto mb-20 font-light leading-relaxed">
+            L'alliance ultime du bio-hacking et de la caféine. Un sanctuaire dédié à la longévité au cœur de Bordeaux.
         </p>
 
-        <!-- Main Generated Image -->
-        <div id="main-brand-image" class="relative w-full aspect-[21/9] rounded-[3rem] overflow-hidden shadow-2xl border border-white/5 bg-[#0a0a0a]">
-            <div class="absolute inset-0 flex flex-col items-center justify-center space-y-4">
-                <div class="loading-spinner"></div>
-                <p class="text-neutral-500 uppercase tracking-[0.4em] text-[10px]">Génération de l'univers...</p>
-            </div>
+        <!-- Main Hero Image Container -->
+        <div id="hero-image" class="relative w-full aspect-[21/10] rounded-[4rem] overflow-hidden border border-black/5 image-container group shadow-2xl">
+            <div class="loading-shimmer absolute inset-0"></div>
+            <div class="z-10 text-[10px] uppercase tracking-widest text-neutral-400">Génération de l'univers visuel...</div>
         </div>
     </header>
 
-    <!-- Experience Highlight -->
-    <section class="py-24 px-8 lg:px-24 max-w-5xl mx-auto">
-        <div class="bg-white p-12 rounded-[3rem] shadow-xl border border-black/5 flex flex-col md:flex-row items-center justify-between gap-12">
-            <div class="text-left">
-                <span class="bg-[#A7C957]/20 text-[#2D5A27] text-[9px] font-black tracking-widest px-4 py-1.5 rounded-full mb-6 inline-block uppercase">Signature</span>
-                <h3 class="text-4xl font-serif italic mb-6">Combo Performance</h3>
-                <p class="text-neutral-500 font-light mb-8">45 min de récupération technologique + 1 Café "Focus".</p>
-                <div class="text-4xl font-bold">65 €</div>
+    <!-- Pricing Section -->
+    <section id="tarifs" class="py-32 px-8 lg:px-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+                <div>
+                    <span class="text-[10px] font-bold tracking-[0.5em] text-[#8B5A2B] uppercase mb-4 block">La Carte de l'Énergie</span>
+                    <h2 class="text-6xl font-serif italic leading-tight text-[#1A1C1A]">Optimisation & <br/>Récupération.</h2>
+                </div>
+                <p class="text-neutral-500 max-w-sm text-sm font-light">Des protocoles conçus pour les créateurs, les athlètes et les visionnaires.</p>
             </div>
-            <button onclick="openModal('Combo Performance')" class="bg-[#1A1C1A] text-white px-10 py-5 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:bg-[#2D5A27] transition-all">Réserver</button>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- BIO-BAR -->
+                <div class="glass-panel p-12 rounded-[3rem] card-hover transition-all group border-l-4 border-l-[#8B5A2B]/20">
+                    <div class="text-[#8B5A2B] mb-10">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-serif italic mb-8">Bio-Bar <span class="block text-xs not-italic font-sans uppercase tracking-widest text-neutral-400 mt-2">Nootropiques</span></h4>
+                    <div class="space-y-6 mb-12">
+                        <div class="flex justify-between items-end border-b border-black/5 pb-4">
+                            <div><p class="font-semibold text-sm">Café Focus (Lion's Mane)</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Neuro-plasticité</p></div>
+                            <p class="text-[#8B5A2B] font-bold text-sm">6,50 €</p>
+                        </div>
+                        <div class="flex justify-between items-end border-b border-black/5 pb-4">
+                            <div><p class="font-semibold text-sm">Latte Ashwagandha</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Équilibre Cortisol</p></div>
+                            <p class="text-[#8B5A2B] font-bold text-sm">7,50 €</p>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div><p class="font-semibold text-sm">Shot Collagène & MCT</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Énergie Cellulaire</p></div>
+                            <p class="text-[#8B5A2B] font-bold text-sm">5,00 €</p>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Menu')" class="w-full py-4 rounded-2xl bg-black text-white text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-[#8B5A2B] transition-all">Consulter la carte</button>
+                </div>
+
+                <!-- RECOVERY LAB -->
+                <div class="p-12 rounded-[3rem] bg-[#1A1C1A] text-white shadow-2xl card-hover transition-all border-l-4 border-l-[#2D5A27]">
+                    <div class="text-[#A7C957] mb-10">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20M5 5l14 14"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-serif italic mb-8">Recovery Lab <span class="block text-xs not-italic font-sans uppercase tracking-widest text-white/30 mt-2">Bio-Tech</span></h4>
+                    <div class="space-y-6 mb-12">
+                        <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                            <div><p class="font-semibold text-sm text-white">Cryo Localisée</p><p class="text-[10px] text-white/40 uppercase tracking-tighter">Récupération Flash</p></div>
+                            <p class="text-[#A7C957] font-bold text-sm">35 €</p>
+                        </div>
+                        <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                            <div><p class="font-semibold text-sm text-white">LED Rouge (PBM)</p><p class="text-[10px] text-white/40 uppercase tracking-tighter">Réparation Tissulaire</p></div>
+                            <p class="text-[#A7C957] font-bold text-sm">30 €</p>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div><p class="font-semibold text-sm text-white">Compression Pro</p><p class="text-[10px] text-white/40 uppercase tracking-tighter">Drainage Lymphatique</p></div>
+                            <p class="text-[#A7C957] font-bold text-sm">25 €</p>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Recovery')" class="w-full py-4 rounded-2xl bg-[#2D5A27] text-white text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-[#A7C957] hover:text-[#1A1C1A] transition-all">Réserver un cycle</button>
+                </div>
+
+                <!-- MASSAGE -->
+                <div class="glass-panel p-12 rounded-[3rem] card-hover transition-all border-l-4 border-l-[#2D5A27]/20">
+                    <div class="text-[#1A1C1A] mb-10">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                    </div>
+                    <h4 class="text-2xl font-serif italic mb-8">Massage Studio <span class="block text-xs not-italic font-sans uppercase tracking-widest text-neutral-400 mt-2">Expertise</span></h4>
+                    <div class="space-y-6 mb-12">
+                        <div class="flex justify-between items-end border-b border-black/5 pb-4">
+                            <div><p class="font-semibold text-sm">Deep Focus (30min)</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Libération Crânienne</p></div>
+                            <p class="text-[#1A1C1A] font-bold text-sm">45 €</p>
+                        </div>
+                        <div class="flex justify-between items-end border-b border-black/5 pb-4">
+                            <div><p class="font-semibold text-sm">Bio-Recovery (50min)</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Drainage & Tonus</p></div>
+                            <p class="text-[#1A1C1A] font-bold text-sm">85 €</p>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div><p class="font-semibold text-sm">L'Expérience Peak</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Full Body + Tech + Café</p></div>
+                            <p class="text-[#2D5A27] font-bold text-sm">115 €</p>
+                        </div>
+                    </div>
+                    <button onclick="openModal('Massage')" class="w-full py-4 rounded-2xl border border-black/10 text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all">Prendre RDV</button>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Lab & Bar Sections -->
-    <section class="py-40 px-8 lg:px-24 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-32">
-        <div id="lab" class="space-y-12">
-            <div>
-                <h2 class="text-6xl font-serif mb-8 italic">Le Lab.</h2>
-                <p class="text-neutral-500 text-lg mb-12">Technologies de pointe pour hacker votre fatigue.</p>
-                <div class="space-y-4 text-[10px] font-bold uppercase tracking-widest text-[#2D5A27]">
-                    <p>• Cryothérapie Localisée</p>
-                    <p>• Photobiomodulation (LED)</p>
-                    <p>• Compression Dynamic</p>
-                </div>
-            </div>
-            <div class="dynamic-image rounded-[3rem] overflow-hidden aspect-[4/3] bg-white shadow-xl" data-prompt="Futuristic clean luxury medical wellness lab with red therapy lights and metallic machinery, cinematic.">
-                <!-- Loader placeholder -->
+    <!-- Lab & Bar Discovery (Thematic Visuals) -->
+    <section id="lab" class="py-40 px-8 lg:px-24 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-32">
+        <div class="space-y-12">
+            <h2 class="text-5xl font-serif mb-8 italic">La Science du Peak.</h2>
+            <p class="text-neutral-500 text-lg leading-relaxed font-light">
+                Chaque protocole du Lab est validé par des données. Nous utilisons la cryothérapie et la photobiomodulation pour réduire l'inflammation et accélérer votre temps de récupération.
+            </p>
+            <div id="lab-image" class="image-container rounded-[3.5rem] aspect-[4/3] border border-black/5 shadow-xl" data-prompt="Luxury biohacking laboratory interior, futuristic cryotherapy chamber, elegant minimal design, soft lighting, bordeaux style.">
+                <div class="loading-shimmer absolute inset-0"></div>
             </div>
         </div>
-        <div id="bar" class="space-y-12 md:mt-48">
-            <div>
-                <h2 class="text-6xl font-serif mb-8 italic">Le Bar.</h2>
-                <p class="text-neutral-500 text-lg mb-12">Caféine de spécialité et adaptogènes bio.</p>
-                <div class="space-y-4 text-[10px] font-bold uppercase tracking-widest text-[#8B5A2B]">
-                    <p>• Grains de Spécialité</p>
-                    <p>• Lion's Mane & Cordyceps</p>
-                    <p>• Élixirs Collagène</p>
-                </div>
+        <div class="space-y-12 md:mt-48">
+            <h2 class="text-5xl font-serif mb-8 italic">L'Art du Beans.</h2>
+            <p class="text-neutral-500 text-lg leading-relaxed font-light">
+                Un café de spécialité torréfié pour la clarté. Nos baristas infusent chaque tasse avec des adaptogènes pour éliminer les pics d'anxiété et offrir une concentration linéaire.
+            </p>
+            <div id="bar-image" class="image-container rounded-[3.5rem] aspect-[4/3] border border-black/5 shadow-xl" data-prompt="Premium specialty coffee latte art with lion's mane mushroom design, luxury ceramic cup, minimalist bordeaux cafe background.">
+                <div class="loading-shimmer absolute inset-0"></div>
             </div>
-            <div class="dynamic-image rounded-[3rem] overflow-hidden aspect-[4/3] bg-white shadow-xl" data-prompt="Close up of an aesthetic specialty latte with mushroom powder on a stone coaster in a minimalist zen cafe.">
-                <!-- Loader placeholder -->
+        </div>
+    </section>
+
+    <!-- Subscriptions -->
+    <section id="abonnements" class="py-40 px-8 lg:px-24 bg-[#1A1C1A]/5">
+        <div class="max-w-7xl mx-auto text-center">
+            <span class="text-[10px] font-bold tracking-[0.5em] text-[#8B5A2B] uppercase mb-8 block">Le Cercle Peak & Beans</span>
+            <h3 class="text-6xl font-serif italic mb-24">Adhésions.</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- FOCUS -->
+                <div class="p-12 rounded-[3.5rem] bg-white border border-black/5 flex flex-col items-center card-hover transition-all">
+                    <h5 class="text-[9px] font-bold uppercase tracking-widest mb-6 text-neutral-400">Pass Focus</h5>
+                    <div class="text-5xl font-serif italic mb-10">79€ <span class="text-[10px] not-italic text-neutral-400">/mois</span></div>
+                    <ul class="text-neutral-600 text-xs space-y-5 mb-12 flex-grow text-left w-full pl-6 border-l border-[#8B5A2B]/20">
+                        <li>• 1 Boisson Nootropique / jour</li>
+                        <li>• 2 Sessions Recovery Lab / mois</li>
+                        <li>• Accès aux évènements Darwin</li>
+                    </ul>
+                    <button onclick="openModal('Pass Focus')" class="w-full py-5 rounded-2xl border border-black/10 text-[9px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Rejoindre</button>
+                </div>
+
+                <!-- BIO-HACKER (Featured) -->
+                <div class="p-12 rounded-[4rem] bg-[#2D5A27] text-white flex flex-col items-center relative scale-105 shadow-2xl shadow-[#2D5A27]/30 z-10">
+                    <div class="absolute -top-4 bg-[#8B5A2B] text-white text-[7px] font-black px-6 py-2 rounded-full tracking-[0.3em] uppercase">Le plus convoité</div>
+                    <h5 class="text-[9px] font-bold uppercase tracking-widest mb-6 text-white/40">Pass Bio-Hacker</h5>
+                    <div class="text-5xl font-serif italic mb-10">149€ <span class="text-[10px] not-italic text-white/30">/mois</span></div>
+                    <ul class="text-white/80 text-xs space-y-5 mb-12 flex-grow text-left w-full pl-6 border-l border-white/20">
+                        <li class="text-white font-bold">• Recovery Lab en ILLIMITÉ</li>
+                        <li>• -15% sur toute la carte Bar</li>
+                        <li>• Conciergerie Santé Peak</li>
+                    </ul>
+                    <button onclick="openModal('Pass Bio-Hacker')" class="w-full py-5 rounded-2xl bg-white text-[#2D5A27] text-[9px] font-bold uppercase tracking-widest hover:bg-[#F7F5F2] transition-all">Souscrire</button>
+                </div>
+
+                <!-- TOTAL PEAK -->
+                <div class="p-12 rounded-[3.5rem] bg-white border border-black/5 flex flex-col items-center card-hover transition-all">
+                    <h5 class="text-[9px] font-bold uppercase tracking-widest mb-6 text-neutral-400">Total Peak</h5>
+                    <div class="text-5xl font-serif italic mb-10">229€ <span class="text-[10px] not-italic text-neutral-400">/mois</span></div>
+                    <ul class="text-neutral-600 text-xs space-y-5 mb-12 flex-grow text-left w-full pl-6 border-l border-[#2D5A27]/20">
+                        <li>• Illimité Recovery Lab</li>
+                        <li>• 1 Soin Massage Bio-Recovery / mois</li>
+                        <li>• Boisson Signature Quotidienne</li>
+                    </ul>
+                    <button onclick="openModal('Pass Total Peak')" class="w-full py-5 rounded-2xl border border-black/10 text-[9px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Rejoindre</button>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-32 border-t border-black/5 text-center px-8">
-        <h4 class="font-serif italic text-3xl mb-12">Peak <span class="text-[#8B5A2B]">&</span> Beans</h4>
-        <p class="text-[9px] text-neutral-400 tracking-[0.5em] uppercase mb-16">BORDEAUX DARWIN | CULTIVEZ VOTRE ÉNERGIE</p>
-        <div class="flex justify-center space-x-12 text-[10px] font-bold uppercase tracking-widest text-[#2D5A27]">
-            <a href="#" onclick="openModal('Franchise')">Franchise</a>
-            <a href="#" onclick="openModal('Presse')">Presse</a>
-            <a href="#" onclick="openModal('Investir')">Investir</a>
+    <footer class="py-32 border-t border-black/5 text-center px-8 bg-white">
+        <div class="flex flex-col items-center mb-16">
+            <svg width="60" height="60" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-6 opacity-40">
+                <path d="M100 20L160 140H40L100 20Z" fill="#2D5A27"/>
+                <circle cx="85" cy="130" r="8" fill="#8B5A2B"/>
+                <circle cx="105" cy="145" r="10" fill="#8B5A2B"/>
+                <circle cx="125" cy="135" r="7" fill="#8B5A2B"/>
+            </svg>
+            <h4 class="font-serif italic text-4xl mb-4">Peak <span class="text-[#8B5A2B]">&</span> Beans</h4>
+            <p class="text-[10px] text-[#2D5A27] font-bold tracking-[0.6em] uppercase italic">Cultivez votre énergie</p>
         </div>
+        
+        <div class="flex flex-wrap justify-center gap-12 text-[9px] font-bold uppercase tracking-widest text-neutral-400 mb-20">
+            <a href="#" onclick="openModal('Franchise')" class="hover:text-black">Franchise</a>
+            <a href="#" onclick="openModal('Investir')" class="hover:text-black">Investissement</a>
+            <a href="#" onclick="openModal('Presse')" class="hover:text-black">Presse</a>
+            <a href="#" onclick="openModal('Contact')" class="hover:text-black">Contact</a>
+        </div>
+        
+        <p class="text-[7px] text-neutral-300 tracking-[0.2em] uppercase">BORDEAUX • DARWIN ECO-SYSTÈME • 2025 ALL RIGHTS RESERVED</p>
     </footer>
 
     <!-- Modal System -->
     <div id="booking-modal" class="fixed inset-0 z-[100] hidden items-center justify-center px-4">
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-md" onclick="closeModal()"></div>
-        <div class="relative bg-[#FDFBF7] w-full max-w-xl rounded-[3rem] shadow-2xl p-12 md:p-16 modal-enter">
-            <button onclick="closeModal()" class="absolute top-8 right-8 text-neutral-400 hover:text-black">✕</button>
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-md transition-opacity" onclick="closeModal()"></div>
+        <div class="relative bg-white w-full max-w-xl rounded-[4rem] shadow-2xl overflow-hidden p-12 md:p-16 border border-black/5">
+            <button onclick="closeModal()" class="absolute top-8 right-8 text-neutral-300 hover:text-black">✕</button>
             <div id="modal-content">
-                <span class="text-[10px] font-bold tracking-[0.4em] uppercase text-[#2D5A27] mb-4 block">Peak & Beans</span>
-                <h3 id="modal-title" class="text-4xl font-serif italic mb-12">Réservation</h3>
+                <span class="text-[10px] font-bold tracking-[0.5em] uppercase text-[#2D5A27] mb-6 block">Demande d'informations</span>
+                <h3 id="modal-title" class="text-4xl font-serif italic mb-10 leading-tight">Commençons votre <br/>ascension.</h3>
                 <form onsubmit="handleModalSubmit(event)" class="space-y-6">
-                    <input required type="text" placeholder="Nom complet" class="w-full bg-white border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all">
-                    <input required type="email" placeholder="Email" class="w-full bg-white border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all">
-                    <select id="modal-select" class="w-full bg-white border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all">
-                        <option>Candidature Franchise</option>
-                        <option>Combo Performance</option>
-                        <option>Séance Recovery</option>
-                        <option>Pass Bio-Hacker</option>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input required type="text" placeholder="Prénom Nom" class="w-full bg-[#F7F5F2] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all text-sm">
+                        <input required type="email" placeholder="Email professionnel" class="w-full bg-[#F7F5F2] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all text-sm">
+                    </div>
+                    <select id="modal-select" class="w-full bg-[#F7F5F2] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all text-sm">
+                        <option>Franchise Peak & Beans</option>
+                        <option>Pass Bio-Hacker (149€/mois)</option>
+                        <option>Expérience Recovery Lab</option>
+                        <option>Studio Massage Expertise</option>
+                        <option>Opportunité d'Investissement</option>
                     </select>
-                    <button id="modal-submit-btn" class="w-full bg-[#2D5A27] text-white font-bold py-6 rounded-2xl uppercase text-[10px] tracking-widest hover:bg-[#1B4332] transition-all">Envoyer</button>
+                    <textarea placeholder="Votre message ou vos objectifs de santé..." class="w-full bg-[#F7F5F2] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all h-32 text-sm"></textarea>
+                    <button id="modal-submit-btn" class="w-full bg-black text-white font-bold py-6 rounded-2xl uppercase text-[10px] tracking-[0.4em] hover:bg-[#2D5A27] transition-all shadow-xl">Envoyer la demande</button>
                 </form>
             </div>
         </div>
@@ -181,65 +341,80 @@
     <script type="module">
         import { GoogleGenAI } from "@google/genai";
 
-        // Gemini Service
-        async function fetchImage(prompt) {
-            try {
-                const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-                const response = await ai.models.generateContent({
-                    model: 'gemini-2.5-flash-image',
-                    contents: { parts: [{ text: `High-end luxury brand aesthetic for Peak & Beans (Bordeaux): ${prompt}. Professional photography, cinematic lighting, photorealistic, architectural digest style.` }] },
-                    config: { imageConfig: { aspectRatio: "16:9" } },
-                });
-                for (const part of response.candidates?.[0]?.content?.parts || []) {
-                    if (part.inlineData) return `data:image/png;base64,${part.inlineData.data}`;
+        const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        async function fetchImage(prompt, maxRetries = 2) {
+            let attempt = 0;
+            while (attempt <= maxRetries) {
+                try {
+                    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+                    const response = await ai.models.generateContent({
+                        model: 'gemini-2.5-flash-image',
+                        contents: { parts: [{ text: `High-end brand photography: ${prompt}. Cinematic lighting, professional architectural digest style, luxury materials, bordeaux aesthetic.` }] },
+                        config: { imageConfig: { aspectRatio: "16:9" } },
+                    });
+
+                    for (const part of response.candidates[0].content.parts) {
+                        if (part.inlineData) {
+                            return `data:image/png;base64,${part.inlineData.data}`;
+                        }
+                    }
+                } catch (error) {
+                    if (error.message?.includes("429") || error.message?.includes("RESOURCE_EXHAUSTED")) {
+                        attempt++;
+                        if (attempt <= maxRetries) {
+                            await delay(Math.pow(2, attempt) * 2000 + Math.random() * 1000);
+                            continue;
+                        }
+                    }
+                    console.error("Gemini Image Error:", error);
+                    return null;
                 }
-                return null;
-            } catch (e) {
-                console.error("Gemini Error:", e);
-                return null;
             }
+            return null;
         }
 
-        // Initialize Dynamic Images
         async function initImages() {
-            // Main Hero Image
-            const mainContainer = document.getElementById('main-brand-image');
-            const mainUrl = await fetchImage("Wide view of a luxury minimalist wellness space in Bordeaux with a specialty coffee bar and biohacking equipment, soft morning light.");
-            if (mainUrl) {
-                mainContainer.innerHTML = `<img src="${mainUrl}" class="w-full h-full object-cover animate-in fade-in duration-1000" alt="Main Brand">`;
+            // Load Hero
+            const heroContainer = document.getElementById('hero-image');
+            const heroUrl = await fetchImage("A futuristic high-end interior of Peak & Beans in Bordeaux Darwin ecosystem, merging specialty coffee bar with sleek bio-hacking equipment, warm natural lighting, minimalist luxury.");
+            if (heroUrl) {
+                heroContainer.innerHTML = `<img src="${heroUrl}" class="w-full h-full object-cover animate-in fade-in duration-1000" alt="Hero">`;
+            } else {
+                heroContainer.innerHTML = `<div class="p-20 text-center opacity-50 uppercase tracking-[0.5em] text-[10px]">Peak & Beans Experience</div>`;
             }
 
-            // Feature Images
-            const dynamicDivs = document.querySelectorAll('.dynamic-image');
-            dynamicDivs.forEach(async (div) => {
-                div.innerHTML = `<div class="w-full h-full flex flex-col items-center justify-center space-y-2">
-                    <div class="loading-spinner"></div>
-                </div>`;
-                const url = await fetchImage(div.dataset.prompt);
-                if (url) {
-                    div.innerHTML = `<img src="${url}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" alt="Feature">`;
-                }
-            });
+            await delay(2000);
+
+            // Load Lab
+            const labContainer = document.getElementById('lab-image');
+            const labUrl = await fetchImage(labContainer.dataset.prompt);
+            if (labUrl) {
+                labContainer.innerHTML = `<img src="${labUrl}" class="w-full h-full object-cover animate-in fade-in duration-1000" alt="Lab">`;
+            }
+
+            await delay(2000);
+
+            // Load Bar
+            const barContainer = document.getElementById('bar-image');
+            const barUrl = await fetchImage(barContainer.dataset.prompt);
+            if (barUrl) {
+                barContainer.innerHTML = `<img src="${barUrl}" class="w-full h-full object-cover animate-in fade-in duration-1000" alt="Bar">`;
+            }
         }
 
-        // Global Modal Controls (available on window)
+        // Modal Logic
         window.openModal = function(subject) {
             const modal = document.getElementById('booking-modal');
             const select = document.getElementById('modal-select');
-            const title = document.getElementById('modal-title');
-            
-            if (subject.includes('Franchise')) title.innerText = "Devenir Partenaire";
-            else title.innerText = "Réserver l'expérience";
-
             if (select) {
-                for(let option of select.options) {
-                    if (option.text.includes(subject)) {
-                        select.value = option.text;
+                for(let opt of select.options) {
+                    if (opt.text.toLowerCase().includes(subject.toLowerCase())) {
+                        select.value = opt.text;
                         break;
                     }
                 }
             }
-
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
@@ -256,23 +431,23 @@
             e.preventDefault();
             const btn = document.getElementById('modal-submit-btn');
             const content = document.getElementById('modal-content');
-            
-            btn.innerText = "Envoi...";
+            btn.innerText = "Traitement...";
             btn.disabled = true;
 
             setTimeout(() => {
                 content.innerHTML = `
                     <div class="text-center py-12">
-                        <div class="w-20 h-20 bg-[#2D5A27]/10 text-[#2D5A27] rounded-full flex items-center justify-center mx-auto mb-8">✓</div>
-                        <h3 class="text-4xl font-serif italic mb-6">À bientôt.</h3>
-                        <p class="text-neutral-500 mb-12">Nos experts vous recontactent sous 24h.</p>
-                        <button onclick="closeModal()" class="bg-black text-white px-12 py-5 rounded-2xl uppercase text-[10px] tracking-widest">Fermer</button>
+                        <div class="w-20 h-20 bg-[#2D5A27]/5 text-[#2D5A27] rounded-full flex items-center justify-center mx-auto mb-10">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <h3 class="text-4xl font-serif italic mb-6">Demande enregistrée.</h3>
+                        <p class="text-neutral-500 font-light mb-12 italic">Nous revenons vers vous prochainement.</p>
+                        <button onclick="closeModal()" class="bg-black text-white px-16 py-5 rounded-2xl uppercase text-[10px] font-bold tracking-widest">Fermer</button>
                     </div>
                 `;
-            }, 1200);
+            }, 1000);
         };
 
-        // Boot
         document.addEventListener('DOMContentLoaded', initImages);
     </script>
 </body>
