@@ -90,7 +90,6 @@
             display: block;
         }
 
-        /* Modal & Calendar Upgrade */
         .custom-scrollbar::-webkit-scrollbar {
             width: 4px;
             height: 4px;
@@ -139,20 +138,14 @@
         </div>
         <div class="hidden lg:flex space-x-12 text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-400">
             <a href="#tarifs" class="hover:text-black transition-all">Services</a>
-            <a href="#concept" class="hover:text-black transition-all">Le Concept</a>
+            <a href="#concept" class="hover:text-black transition-all">Concept</a>
             <a href="#equipe" class="hover:text-black transition-all">L'Équipe</a>
             <a href="#vision" class="hover:text-black transition-all">Expansion</a>
             <a href="#avis" class="hover:text-black transition-all">Avis</a>
         </div>
-        <div class="flex items-center space-x-6">
-            <div class="hidden sm:flex space-x-4 border-r border-black/5 pr-6 mr-6">
-                <a href="#" class="social-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c.796 0 1.441.645 1.441 1.44s-.645 1.44-1.441 1.44c-.795 0-1.439-.645-1.439-1.44s.644-1.44 1.439-1.44z"/></svg></a>
-                <a href="#" class="social-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-            </div>
-            <button onclick="openFranchiseModal()" class="btn-primary px-8 py-3 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-sm">
-                Nous rejoindre
-            </button>
-        </div>
+        <button onclick="openFranchiseModal()" class="btn-primary px-8 py-3 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-sm">
+            Nous rejoindre
+        </button>
     </nav>
 
     <!-- Hero -->
@@ -160,7 +153,7 @@
         <div class="inline-flex items-center space-x-3 bg-white/50 px-6 py-2 rounded-full mb-16 border border-black/5 shadow-sm">
             <span class="text-[8px] font-bold tracking-[0.6em] uppercase text-neutral-400">Bordeaux • Darwin Eco-système</span>
         </div>
-        <h1 class="text-7xl md:text-[11rem] font-serif mb-12 leading-[0.8] text-[#1A1C1A] italic">
+        <h1 class="text-7xl md:text-[11rem] font-serif mb-12 leading-[0.8] text-[#1A1C1A] italic text-balance">
             Cultivez votre <br />
             <span class="gradient-text not-italic font-bold">énergie.</span>
         </h1>
@@ -283,7 +276,33 @@
         </div>
     </section>
 
-    <!-- Vision & Franchise Section -->
+    <!-- Qui Sommes-Nous (L'ÉQUIPE) -->
+    <section id="equipe" class="py-48 px-8 lg:px-24 max-w-7xl mx-auto border-t border-black/5">
+        <div class="text-center mb-32">
+            <span class="text-[10px] font-bold tracking-[0.7em] text-[#724926] uppercase mb-8 block">Les Architectes</span>
+            <h2 class="text-7xl font-serif italic text-[#1A1C1A]">L'Ascension Commune.</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-24 items-start text-center">
+            <div class="space-y-6">
+                <h4 class="text-2xl font-serif italic">Robin</h4>
+                <p class="text-[10px] font-bold tracking-[0.4em] uppercase text-[#1A3C15]">Vision & Stratégie</p>
+                <p class="text-neutral-400 text-sm font-light leading-relaxed">Passionné par l'optimisation humaine, Robin insuffle la vision technologique et la rigueur du bio-hacking dans l'expérience Peak.</p>
+            </div>
+            <div class="space-y-6 md:mt-12">
+                <h4 class="text-2xl font-serif italic">Marie</h4>
+                <p class="text-[10px] font-bold tracking-[0.4em] uppercase text-[#1A3C15]">Expérience & Esthétique</p>
+                <p class="text-neutral-400 text-sm font-light leading-relaxed">Marie sculpte l'univers sensoriel du lieu. Son exigence sur la qualité et le bien-être définit chaque détail du Studio.</p>
+            </div>
+            <div class="space-y-6">
+                <h4 class="text-2xl font-serif italic">Mathis</h4>
+                <p class="text-[10px] font-bold tracking-[0.4em] uppercase text-[#1A3C15]">Art de l'Extraction</p>
+                <p class="text-neutral-400 text-sm font-light leading-relaxed">Expert en café de spécialité, Mathis transforme le rituel matinal en un vecteur de performance cognitive pure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Franchise -->
     <section id="vision" class="py-48 px-8 lg:px-24 max-w-7xl mx-auto border-t border-black/5">
         <div class="text-center mb-32">
             <span class="text-[10px] font-bold tracking-[0.7em] text-[#A7C957] uppercase mb-8 block">Expansion Stratégique</span>
@@ -315,6 +334,50 @@
         </div>
     </section>
 
+    <!-- Avis Clients -->
+    <section id="avis" class="py-48 px-8 lg:px-24 max-w-7xl mx-auto border-t border-black/5 bg-white/10">
+        <div class="text-center mb-32">
+            <span class="text-[10px] font-bold tracking-[0.7em] text-[#724926] uppercase mb-8 block">Expériences partagées</span>
+            <h2 class="text-7xl font-serif italic text-[#1A1C1A]">Ce qu'ils en disent.</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="glass-panel p-12 rounded-[3.5rem] italic text-[#1A1C1A] flex flex-col justify-between h-full">
+                <p class="text-lg leading-relaxed mb-8">"Un lieu unique à Bordeaux. J'y vais pour le Café Focus avant mes réunions, la clarté mentale est folle."</p>
+                <div>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-[#724926]">Alexandre D.</p>
+                    <p class="text-[8px] text-neutral-400 mt-1 uppercase">Entrepreneur Tech</p>
+                </div>
+            </div>
+            <div class="glass-panel p-12 rounded-[3.5rem] italic text-[#1A1C1A] flex flex-col justify-between h-full">
+                <p class="text-lg leading-relaxed mb-8">"La cryothérapie m'a sauvé après mon marathon. L'équipe est d'une expertise rare et le cadre est sublime."</p>
+                <div>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-[#724926]">Sophie M.</p>
+                    <p class="text-[8px] text-neutral-400 mt-1 uppercase">Sportive de haut niveau</p>
+                </div>
+            </div>
+            <div class="glass-panel p-12 rounded-[3.5rem] italic text-[#1A1C1A] flex flex-col justify-between h-full">
+                <p class="text-lg leading-relaxed mb-8">"L'esthétique du lieu est apaisante. Le massage crânien est de loin le meilleur que j'ai reçu. Un sanctuaire de performance."</p>
+                <div>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-[#724926]">Julien L.</p>
+                    <p class="text-[8px] text-neutral-400 mt-1 uppercase">Directeur Créatif</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-40 border-t border-black/5 bg-white text-center px-8">
+        <div class="flex flex-col items-center mb-24">
+            <h4 class="font-serif italic text-5xl mb-6">Peak <span class="text-[#724926]">&</span> Beans</h4>
+            <p class="text-[10px] text-[#1A3C15] font-bold tracking-[0.8em] uppercase italic mb-16">Cultivez votre énergie</p>
+            <div class="flex space-x-8">
+                <a href="#" class="social-link">INSTAGRAM</a>
+                <a href="#" class="social-link">LINKEDIN</a>
+            </div>
+        </div>
+        <p class="text-[7px] text-neutral-200 tracking-[0.4em] uppercase">BORDEAUX • 2025 ALL RIGHTS RESERVED</p>
+    </footer>
+
     <!-- Franchise Modal (Full Recruitment Sheet) -->
     <div id="franchise-modal" class="fixed inset-0 z-[100] hidden">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-2xl transition-opacity" onclick="closeFranchiseModal()"></div>
@@ -323,134 +386,87 @@
                 <button onclick="closeFranchiseModal()" class="absolute top-10 right-10 z-50 text-neutral-300 hover:text-black transition-all text-xl">✕</button>
                 
                 <div class="flex-grow overflow-y-auto custom-scrollbar p-10 md:p-24">
-                    <!-- Header Fiche -->
                     <div class="mb-24 text-center">
                         <span class="text-[10px] font-bold tracking-[0.6em] uppercase text-[#A7C957] mb-8 block">Opportunité Partenaire</span>
                         <h2 class="text-6xl font-serif italic mb-6">Fiche Franchisé : Peak & Beans</h2>
                         <p class="text-xl text-neutral-400 font-light italic">Devenez l'acteur majeur du Bio-hacking dans votre ville.</p>
                     </div>
 
-                    <!-- 1. L'Investissement -->
+                    <!-- Investissement -->
                     <div class="mb-32">
                         <h3 class="text-2xl font-serif italic mb-12 border-b border-black/5 pb-6">1. L'Investissement</h3>
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                             <div class="p-8 rounded-3xl bg-[#F5F2ED] border border-black/5">
-                                <p class="text-[8px] font-bold uppercase tracking-widest text-[#1A3C15] mb-4">Apport Minimum</p>
+                                <p class="text-[8px] font-bold uppercase text-[#1A3C15] mb-4">Apport Minimum</p>
                                 <p class="text-3xl font-serif">60 000 €</p>
-                                <p class="text-[9px] text-neutral-400 mt-2 uppercase tracking-tighter">Invest. Total : 180k€ - 220k€</p>
+                                <p class="text-[9px] text-neutral-400 mt-2 uppercase tracking-tighter">Total : 180k€ - 220k€</p>
                             </div>
                             <div class="p-8 rounded-3xl bg-[#F5F2ED] border border-black/5">
-                                <p class="text-[8px] font-bold uppercase tracking-widest text-[#1A3C15] mb-4">Droit d'Entrée</p>
+                                <p class="text-[8px] font-bold uppercase text-[#1A3C15] mb-4">Droit d'Entrée</p>
                                 <p class="text-3xl font-serif">25 000 €</p>
-                                <p class="text-[9px] text-neutral-400 mt-2 uppercase tracking-tighter">Incluant Formation & Kit</p>
+                                <p class="text-[9px] text-neutral-400 mt-2">Inclus formation & kit</p>
                             </div>
                             <div class="p-8 rounded-3xl bg-[#F5F2ED] border border-black/5">
-                                <p class="text-[8px] font-bold uppercase tracking-widest text-[#1A3C15] mb-4">Redevance Marketing</p>
-                                <p class="text-3xl font-serif">5 % du CA</p>
-                                <p class="text-[9px] text-neutral-400 mt-2 uppercase tracking-tighter">Réinjectés en acquisition locale</p>
+                                <p class="text-[8px] font-bold uppercase text-[#1A3C15] mb-4">Redevance Marketing</p>
+                                <p class="text-3xl font-serif">5 %</p>
+                                <p class="text-[9px] text-neutral-400 mt-2">Réinvesti en acquisition</p>
                             </div>
-                            <div class="p-8 rounded-3xl bg-[#1A3C15] text-[#A7C957] border border-black/5">
-                                <p class="text-[8px] font-bold uppercase tracking-widest mb-4">Rentabilité</p>
-                                <p class="text-3xl font-serif">Accélérée</p>
-                                <p class="text-[9px] text-white/40 mt-2 uppercase tracking-tighter">Equilibre atteint 3 mois plus tôt</p>
+                            <div class="p-8 rounded-3xl bg-[#1A3C15] text-[#A7C957]">
+                                <p class="text-[8px] font-bold uppercase mb-4">Rentabilité</p>
+                                <p class="text-3xl font-serif">- 3 mois</p>
+                                <p class="text-[9px] text-white/40 mt-2">Vs moyenne secteur</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 2. Vos Avantages Compétitifs -->
+                    <!-- Avantages -->
                     <div class="mb-32">
-                        <h3 class="text-2xl font-serif italic mb-12 border-b border-black/5 pb-6">2. Vos Avantages Compétitifs</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                            <div class="flex items-start space-x-6 p-8 rounded-3xl bg-white border border-black/5 hover:border-[#A7C957] transition-all">
-                                <span class="text-4xl font-serif italic text-[#A7C957]">82%</span>
-                                <div>
-                                    <h4 class="text-[10px] font-bold uppercase tracking-widest mb-2">Marges Records</h4>
-                                    <p class="text-[11px] text-neutral-400 leading-relaxed font-light">82% sur boissons et 92% sur protocoles tech.</p>
-                                </div>
+                        <h3 class="text-2xl font-serif italic mb-12 border-b border-black/5 pb-6">2. Avantages Compétitifs</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div class="p-8 rounded-3xl border border-black/5 hover:border-[#A7C957] transition-all">
+                                <span class="text-4xl font-serif italic text-[#A7C957] mb-4 block">82%</span>
+                                <h4 class="text-[10px] font-bold uppercase mb-2">Marges Records</h4>
+                                <p class="text-[11px] text-neutral-400">82% sur boissons / 92% sur tech.</p>
                             </div>
-                            <div class="flex items-start space-x-6 p-8 rounded-3xl bg-white border border-black/5 hover:border-[#A7C957] transition-all">
-                                <span class="text-4xl font-serif italic text-[#A7C957]">24€</span>
-                                <div>
-                                    <h4 class="text-[10px] font-bold uppercase tracking-widest mb-2">Panier Moyen</h4>
-                                    <p class="text-[11px] text-neutral-400 leading-relaxed font-light">Vs 8€ standard grâce au couplage café + récup.</p>
-                                </div>
+                            <div class="p-8 rounded-3xl border border-black/5 hover:border-[#A7C957] transition-all">
+                                <span class="text-4xl font-serif italic text-[#A7C957] mb-4 block">24€</span>
+                                <h4 class="text-[10px] font-bold uppercase mb-2">Panier Moyen</h4>
+                                <p class="text-[11px] text-neutral-400">Vs 8€ standard (Café + Récup).</p>
                             </div>
-                            <div class="flex items-start space-x-6 p-8 rounded-3xl bg-white border border-black/5 hover:border-[#A7C957] transition-all">
-                                <span class="text-4xl font-serif italic text-[#A7C957]">5.2</span>
-                                <div>
-                                    <h4 class="text-[10px] font-bold uppercase tracking-widest mb-2">ROI Publicitaire</h4>
-                                    <p class="text-[11px] text-neutral-400 leading-relaxed font-light">250 leads qualifiés générés avant ouverture.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-6 p-8 rounded-3xl bg-white border border-black/5 hover:border-[#A7C957] transition-all">
-                                <span class="text-4xl font-serif italic text-[#A7C957]">55%</span>
-                                <div>
-                                    <h4 class="text-[10px] font-bold uppercase tracking-widest mb-2">Fidélisation</h4>
-                                    <p class="text-[11px] text-neutral-400 leading-relaxed font-light">Taux de réachat automatisé via notre CRM propriétaire.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-6 p-8 rounded-3xl bg-white border border-black/5 hover:border-[#A7C957] transition-all">
-                                <span class="text-4xl font-serif italic text-[#A7C957]">-10h</span>
-                                <div>
-                                    <h4 class="text-[10px] font-bold uppercase tracking-widest mb-2">Gain de Temps</h4>
-                                    <p class="text-[11px] text-neutral-400 leading-relaxed font-light">Gestion optimisée via 450 outils marketing prêts.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-6 p-8 rounded-3xl bg-white border border-black/5 hover:border-[#A7C957] transition-all">
-                                <svg class="text-[#A7C957] w-8 h-8 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a2 2 0 00-1.96 1.414l-.547 2.188a2 2 0 001.022 2.387l2.188.547a2 2 0 002.387-1.022l.547-2.188a2 2 0 00-1.022-2.387zM5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div>
-                                    <h4 class="text-[10px] font-bold uppercase tracking-widest mb-2">Exclusivité R&D</h4>
-                                    <p class="text-[11px] text-neutral-400 leading-relaxed font-light">Neuro-méditation et adaptogènes rares en exclusivité.</p>
-                                </div>
+                            <div class="p-8 rounded-3xl border border-black/5 hover:border-[#A7C957] transition-all">
+                                <span class="text-4xl font-serif italic text-[#A7C957] mb-4 block">5.2</span>
+                                <h4 class="text-[10px] font-bold uppercase mb-2">ROI Publicitaire</h4>
+                                <p class="text-[11px] text-neutral-400">250 leads générés avant ouverture.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 3. Pourquoi nous ? Tableau Comparatif -->
+                    <!-- Comparatif -->
                     <div class="mb-32">
-                        <h3 class="text-2xl font-serif italic mb-12 border-b border-black/5 pb-6">3. Analyse Comparative</h3>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left">
-                                <thead class="border-b-2 border-black/5">
-                                    <tr>
-                                        <th class="py-6 text-[10px] uppercase tracking-widest text-neutral-400 font-bold">Indicateur de Performance</th>
-                                        <th class="py-6 text-[10px] uppercase tracking-widest text-neutral-400 font-bold">Indépendant Standard</th>
-                                        <th class="py-6 text-[10px] uppercase tracking-widest text-[#1A3C15] font-bold">Franchisé Peak & Beans</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-black/5">
-                                    <tr>
-                                        <td class="py-8 font-medium text-xs">Coût par client (CPL)</td>
-                                        <td class="py-8 text-xs text-neutral-400">25,00 €</td>
-                                        <td class="py-8 text-xs font-bold text-[#1A3C15]">14,50 €</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-8 font-medium text-xs">CA Additionnel (Web)</td>
-                                        <td class="py-8 text-xs text-neutral-400">0 %</td>
-                                        <td class="py-8 text-xs font-bold text-[#A7C957]">+15 %</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-8 font-medium text-xs">Marge Net (vs Indépendant)</td>
-                                        <td class="py-8 text-xs text-neutral-400">Standard</td>
-                                        <td class="py-8 text-xs font-bold text-[#A7C957]">+15 % net</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <h3 class="text-2xl font-serif italic mb-12 border-b border-black/5 pb-6">3. Analyse de Performance</h3>
+                        <table class="w-full text-left">
+                            <thead class="border-b border-black/5">
+                                <tr class="text-[10px] uppercase text-neutral-400">
+                                    <th class="py-4">Indicateur</th>
+                                    <th class="py-4">Indépendant</th>
+                                    <th class="py-4 text-[#1A3C15]">Peak & Beans</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-xs divide-y divide-black/5">
+                                <tr><td class="py-6">Coût par client (CPL)</td><td class="py-6">25,00 €</td><td class="py-6 font-bold text-[#1A3C15]">14,50 €</td></tr>
+                                <tr><td class="py-6">CA Additionnel (Web)</td><td class="py-6">0 %</td><td class="py-6 font-bold text-[#A7C957]">+15 %</td></tr>
+                                <tr><td class="py-6">Marge Net (vs Indé)</td><td class="py-6">Standard</td><td class="py-6 font-bold text-[#A7C957]">+15 %</td></tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <!-- CTA Form Final -->
-                    <div class="bg-[#0F110F] text-white p-12 md:p-20 rounded-[4rem] text-center">
-                        <h4 class="text-4xl font-serif italic mb-10">Pilotez un hub de performance.</h4>
-                        <p class="text-white/40 text-sm max-w-xl mx-auto mb-16 leading-relaxed">Le constat est simple : vous ne gérez pas un simple café, vous pilotez un système optimisé. Nous sécurisons votre capital.</p>
-                        
+                    <!-- Form -->
+                    <div class="bg-[#0F110F] text-white p-20 rounded-[4rem] text-center">
+                        <h4 class="text-4xl font-serif italic mb-8">Pilotez votre Hub.</h4>
                         <form onsubmit="handleFranchiseSubmit(event)" class="max-w-xl mx-auto space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <input required type="text" placeholder="Prénom Nom" class="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 focus:outline-none focus:border-[#A7C957] text-white text-xs">
-                                <input required type="email" placeholder="Email Professionnel" class="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 focus:outline-none focus:border-[#A7C957] text-white text-xs">
-                            </div>
-                            <input required type="text" placeholder="Ville d'intérêt (Bassin d'Arcachon, Biarritz, Toulouse...)" class="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 focus:outline-none focus:border-[#A7C957] text-white text-xs">
-                            <button class="w-full bg-[#A7C957] text-black font-bold py-6 rounded-2xl uppercase text-[10px] tracking-[0.4em] hover:bg-white transition-all shadow-xl">Déposer ma candidature</button>
+                            <input required type="text" placeholder="Nom Complet" class="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 text-xs text-white">
+                            <input required type="email" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 text-xs text-white">
+                            <button class="w-full bg-[#A7C957] text-black font-bold py-6 rounded-2xl uppercase text-[10px] tracking-[0.4em]">Déposer Candidature</button>
                         </form>
                     </div>
                 </div>
@@ -458,138 +474,110 @@
         </div>
     </div>
 
-    <!-- Booking Modal with Calendar (Preserved) -->
+    <!-- Booking Modal with Calendar -->
     <div id="booking-modal" class="fixed inset-0 z-[100] hidden items-center justify-center px-4">
         <div class="absolute inset-0 bg-black/40 backdrop-blur-lg transition-opacity" onclick="closeModal()"></div>
         <div class="relative bg-white w-full max-w-2xl h-[90vh] md:h-auto rounded-[3rem] md:rounded-[4rem] shadow-4xl p-10 md:p-20 overflow-y-auto custom-scrollbar border border-black/5">
             <button onclick="closeModal()" class="absolute top-10 right-10 text-neutral-300 hover:text-black transition-all">✕</button>
             <div id="modal-content">
                 <span class="text-[9px] font-bold tracking-[0.6em] uppercase text-[#1A3C15] mb-6 block">Planification Immédiate</span>
-                <h3 id="modal-title" class="text-4xl font-serif italic mb-10 leading-tight">Optimisez votre <br/>temps.</h3>
+                <h3 id="modal-title" class="text-4xl font-serif italic mb-10 leading-tight">Optimisez votre temps.</h3>
                 
                 <form onsubmit="handleModalSubmit(event)" class="space-y-10">
-                    <input id="modal-service-name" type="hidden" value="Contact">
-                    
-                    <!-- Calendar Section -->
+                    <input id="modal-service-name" type="hidden">
                     <div id="calendar-wrapper" class="space-y-6">
                         <p class="text-[9px] font-bold uppercase tracking-widest text-neutral-400">1. Choisissez une date</p>
-                        <div id="calendar-days" class="flex overflow-x-auto gap-3 pb-4 custom-scrollbar">
-                            <!-- Days injected via JS -->
-                        </div>
+                        <div id="calendar-days" class="flex overflow-x-auto gap-3 pb-4 custom-scrollbar"></div>
                         
                         <p class="text-[9px] font-bold uppercase tracking-widest text-neutral-400 mt-10">2. Choisissez un créneau</p>
                         <div class="grid grid-cols-3 md:grid-cols-6 gap-3">
-                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px] uppercase tracking-tighter hover:bg-[#F5F2ED]">09:00</button>
-                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px] uppercase tracking-tighter hover:bg-[#F5F2ED]">10:30</button>
-                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px] uppercase tracking-tighter hover:bg-[#F5F2ED]">12:00</button>
-                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px] uppercase tracking-tighter hover:bg-[#F5F2ED]">14:30</button>
-                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px] uppercase tracking-tighter hover:bg-[#F5F2ED]">16:00</button>
-                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px] uppercase tracking-tighter hover:bg-[#F5F2ED]">17:30</button>
+                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px]">09:00</button>
+                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px]">10:30</button>
+                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px]">12:00</button>
+                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px]">14:30</button>
+                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px]">16:00</button>
+                            <button type="button" onclick="selectTime(this)" class="time-slot p-3 border border-black/5 rounded-xl text-[10px]">17:30</button>
                         </div>
-                        <input type="hidden" id="selected-date" required>
-                        <input type="hidden" id="selected-time" required>
+                        <input type="hidden" id="selected-date"><input type="hidden" id="selected-time">
                     </div>
 
-                    <!-- Contact Details -->
                     <div class="space-y-4 pt-4">
                         <p class="text-[9px] font-bold uppercase tracking-widest text-neutral-400">3. Vos coordonnées</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input required type="text" placeholder="Prénom Nom" class="w-full bg-[#F5F2ED] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#A7C957] text-xs">
-                            <input required type="email" placeholder="Email" class="w-full bg-[#F5F2ED] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#A7C957] text-xs">
+                            <input required type="text" placeholder="Prénom Nom" class="w-full bg-[#F5F2ED] rounded-2xl px-6 py-4 text-xs">
+                            <input required type="email" placeholder="Email" class="w-full bg-[#F5F2ED] rounded-2xl px-6 py-4 text-xs">
                         </div>
                     </div>
-                    
-                    <button class="w-full bg-black text-white font-bold py-6 rounded-2xl uppercase text-[10px] tracking-[0.4em] hover:bg-[#1A3C15] transition-all shadow-xl">Confirmer le rendez-vous</button>
+                    <button class="w-full bg-black text-white font-bold py-6 rounded-2xl uppercase text-[10px] tracking-[0.4em]">Confirmer le RDV</button>
                 </form>
             </div>
         </div>
     </div>
 
     <script type="module">
-        // Init Calendar Days
-        const calendarDays = document.getElementById('calendar-days');
         const months = ['JAN', 'FEV', 'MAR', 'AVR', 'MAI', 'JUI', 'JUI', 'AOU', 'SEP', 'OCT', 'NOV', 'DEC'];
         const days = ['DIM', 'LUN', 'MAR', 'MER', 'JEU', 'VEN', 'SAM'];
         
         const initCalendar = () => {
-            if(!calendarDays) return;
-            calendarDays.innerHTML = '';
+            const cal = document.getElementById('calendar-days');
+            if(!cal) return;
+            cal.innerHTML = '';
             for(let i=0; i<7; i++) {
                 const date = new Date();
                 date.setDate(date.getDate() + i);
                 const dayEl = document.createElement('button');
                 dayEl.type = 'button';
-                dayEl.className = 'calendar-day flex-shrink-0 w-20 h-24 border border-black/5 rounded-2xl flex flex-col items-center justify-center space-y-2 transition-all hover:bg-[#F5F2ED]';
+                dayEl.className = 'calendar-day flex-shrink-0 w-20 h-24 border border-black/5 rounded-2xl flex flex-col items-center justify-center space-y-2';
                 dayEl.innerHTML = `
-                    <span class="text-[7px] font-bold text-neutral-400 uppercase tracking-widest">${days[date.getDay()]}</span>
+                    <span class="text-[7px] font-bold text-neutral-400 uppercase">${days[date.getDay()]}</span>
                     <span class="text-xl font-serif italic">${date.getDate()}</span>
-                    <span class="text-[7px] font-bold uppercase tracking-widest">${months[date.getMonth()]}</span>
+                    <span class="text-[7px] font-bold uppercase">${months[date.getMonth()]}</span>
                 `;
                 dayEl.onclick = () => selectDay(dayEl, date.toLocaleDateString());
-                calendarDays.appendChild(dayEl);
+                cal.appendChild(dayEl);
                 if(i === 0) selectDay(dayEl, date.toLocaleDateString());
             }
         };
 
-        window.selectDay = (el, dateStr) => {
-            document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('active'));
+        window.selectDay = (el, d) => {
+            document.querySelectorAll('.calendar-day').forEach(x => x.classList.remove('active'));
             el.classList.add('active');
-            document.getElementById('selected-date').value = dateStr;
+            document.getElementById('selected-date').value = d;
         };
 
         window.selectTime = (el) => {
-            document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.time-slot').forEach(x => x.classList.remove('active'));
             el.classList.add('active');
             document.getElementById('selected-time').value = el.innerText;
         };
 
-        window.openModal = (subject) => {
-            document.getElementById('modal-title').innerText = subject;
-            document.getElementById('modal-service-name').value = subject;
-            const isMenu = subject.toLowerCase().includes('menu');
+        window.openModal = (s) => {
+            document.getElementById('modal-title').innerText = s;
+            document.getElementById('modal-service-name').value = s;
+            const isMenu = s.toLowerCase().includes('menu');
             document.getElementById('calendar-wrapper').style.display = isMenu ? 'none' : 'block';
             initCalendar();
             document.getElementById('booking-modal').classList.replace('hidden', 'flex');
-            document.body.style.overflow = 'hidden';
         };
 
-        window.closeModal = () => {
-            document.getElementById('booking-modal').classList.replace('flex', 'hidden');
-            document.body.style.overflow = 'auto';
-        };
-
-        window.openFranchiseModal = () => {
-            document.getElementById('franchise-modal').classList.replace('hidden', 'block');
-            document.body.style.overflow = 'hidden';
-        };
-
-        window.closeFranchiseModal = () => {
-            document.getElementById('franchise-modal').classList.replace('block', 'hidden');
-            document.body.style.overflow = 'auto';
-        };
+        window.closeModal = () => document.getElementById('booking-modal').classList.replace('flex', 'hidden');
+        window.openFranchiseModal = () => document.getElementById('franchise-modal').classList.replace('hidden', 'block');
+        window.closeFranchiseModal = () => document.getElementById('franchise-modal').classList.replace('block', 'hidden');
 
         window.handleModalSubmit = (e) => {
             e.preventDefault();
-            const service = document.getElementById('modal-service-name').value;
-            const date = document.getElementById('selected-date').value;
-            const time = document.getElementById('selected-time').value;
-            const content = document.getElementById('modal-content');
-            
-            let message = `<div class="text-center py-20">
-                <p class="text-3xl font-serif italic mb-6">Demande enregistrée.</p>
-                <p class="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-2 italic">Service : ${service}</p>`;
-            
-            if(date && time && !service.toLowerCase().includes('menu')) {
-                message += `<p class="text-[10px] uppercase tracking-[0.3em] font-bold text-[#1A3C15]">Rendez-vous le ${date} à ${time}</p>`;
-            }
-            
-            message += `<button onclick="closeModal()" class="mt-16 text-[9px] font-bold uppercase underline tracking-[0.2em]">Fermer</button></div>`;
-            content.innerHTML = message;
+            const s = document.getElementById('modal-service-name').value;
+            document.getElementById('modal-content').innerHTML = `
+                <div class="text-center py-20">
+                    <p class="text-3xl font-serif italic mb-6">Confirmé.</p>
+                    <p class="text-[10px] uppercase tracking-widest text-neutral-400">Service : ${s}</p>
+                    <button onclick="closeModal()" class="mt-16 text-[9px] font-bold uppercase underline">Fermer</button>
+                </div>`;
         };
 
         window.handleFranchiseSubmit = (e) => {
             e.preventDefault();
-            alert("Merci pour votre candidature. Notre équipe 'Expansion' étudiera votre dossier et reviendra vers vous sous 48h.");
+            alert("Dossier transmis. Notre équipe reviendra vers vous sous 48h.");
             closeFranchiseModal();
         };
 
