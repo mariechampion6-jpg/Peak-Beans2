@@ -326,6 +326,15 @@
             <h4 class="font-serif italic text-4xl mb-4">Peak <span class="text-[#8B5A2B]">&</span> Beans</h4>
             <p class="text-[10px] text-[#2D5A27] font-bold tracking-[0.6em] uppercase italic">Cultivez votre énergie</p>
         </div>
+
+        <!-- Restoration of Footer Links -->
+        <div class="flex flex-wrap justify-center gap-12 text-[9px] font-bold uppercase tracking-widest text-neutral-400 mb-20">
+            <a href="#" onclick="openModal('Devenir Franchisé')" class="hover:text-black transition-colors">Franchise</a>
+            <a href="#" onclick="openModal('Investissement')" class="hover:text-black transition-colors">Investir</a>
+            <a href="#" onclick="openModal('Espace Presse')" class="hover:text-black transition-colors">Presse</a>
+            <a href="#" onclick="openModal('Contactez-nous')" class="hover:text-black transition-colors">Contact</a>
+        </div>
+        
         <p class="text-[7px] text-neutral-300 tracking-[0.2em] uppercase">BORDEAUX • DARWIN ECO-SYSTÈME • 2025 ALL RIGHTS RESERVED</p>
     </footer>
 
@@ -335,7 +344,7 @@
         <div class="relative bg-white w-full max-w-xl rounded-[4rem] shadow-2xl overflow-hidden p-12 md:p-16 border border-black/5">
             <button onclick="closeModal()" class="absolute top-8 right-8 text-neutral-300 hover:text-black">✕</button>
             <div id="modal-content">
-                <span class="text-[10px] font-bold tracking-[0.5em] uppercase text-[#2D5A27] mb-6 block">Demande de réservation</span>
+                <span class="text-[10px] font-bold tracking-[0.5em] uppercase text-[#2D5A27] mb-6 block">Demande d'information</span>
                 <h3 id="modal-title" class="text-4xl font-serif italic mb-10 leading-tight">Commençons votre <br/>ascension.</h3>
                 <form onsubmit="handleModalSubmit(event)" class="space-y-6">
                     <input id="modal-service-name" type="hidden" value="Contact Général">
@@ -343,7 +352,8 @@
                         <input required type="text" placeholder="Prénom Nom" class="w-full bg-[#F7F5F2] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all text-sm">
                         <input required type="email" placeholder="Email professionnel" class="w-full bg-[#F7F5F2] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all text-sm">
                     </div>
-                    <button id="modal-submit-btn" class="w-full bg-black text-white font-bold py-6 rounded-2xl uppercase text-[10px] tracking-[0.4em] hover:bg-[#2D5A27] transition-all shadow-xl">Valider la sélection</button>
+                    <textarea placeholder="Comment pouvons-nous vous accompagner ?" class="w-full bg-[#F7F5F2] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all h-24 text-sm"></textarea>
+                    <button id="modal-submit-btn" class="w-full bg-black text-white font-bold py-6 rounded-2xl uppercase text-[10px] tracking-[0.4em] hover:bg-[#2D5A27] transition-all shadow-xl">Valider la demande</button>
                 </form>
             </div>
         </div>
