@@ -48,7 +48,7 @@
             to { background-position: 1200px 1200px; }
         }
 
-        .image-container {
+        .media-container {
             background: #e5e1da;
             position: relative;
             overflow: hidden;
@@ -69,12 +69,16 @@
         }
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-        .organic-stroke {
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: dash 3s ease-in-out forwards;
+        .video-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+            pointer-events: none;
         }
-        @keyframes dash { to { stroke-dashoffset: 0; } }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+        .animate-pulse-slow { animation: pulse-slow 3s infinite; }
     </style>
     <script type="importmap">
     {
@@ -128,10 +132,10 @@
             L'alliance ultime du bio-hacking et de la caféine. Un sanctuaire dédié à la longévité au cœur de Bordeaux.
         </p>
 
-        <!-- Main Hero Image Container -->
-        <div id="hero-image" class="relative w-full aspect-[21/10] rounded-[4rem] overflow-hidden border border-black/5 image-container group shadow-2xl">
+        <!-- Main Hero Image (Photo) -->
+        <div id="hero-image" class="relative w-full aspect-[21/10] rounded-[4rem] overflow-hidden border border-black/5 media-container group shadow-2xl">
             <div class="loading-shimmer absolute inset-0"></div>
-            <div class="z-10 text-[10px] uppercase tracking-widest text-neutral-400">Génération de l'univers visuel...</div>
+            <div class="z-10 text-[10px] uppercase tracking-widest text-neutral-400">Capture de l'instant présent...</div>
         </div>
     </header>
 
@@ -143,7 +147,16 @@
                     <span class="text-[10px] font-bold tracking-[0.5em] text-[#8B5A2B] uppercase mb-4 block">La Carte de l'Énergie</span>
                     <h2 class="text-6xl font-serif italic leading-tight text-[#1A1C1A]">Optimisation & <br/>Récupération.</h2>
                 </div>
-                <p class="text-neutral-500 max-w-sm text-sm font-light">Des protocoles conçus pour les créateurs, les athlètes et les visionnaires.</p>
+                <!-- Best Seller Highlight -->
+                <div class="bg-[#A7C957]/10 border border-[#A7C957]/30 p-6 rounded-3xl max-w-sm">
+                    <span class="text-[8px] font-black uppercase tracking-[0.3em] bg-[#A7C957] text-[#2D5A27] px-3 py-1 rounded-full mb-3 inline-block">Best-Seller</span>
+                    <h4 class="font-serif italic text-xl mb-1">Combo Performance</h4>
+                    <p class="text-[10px] text-neutral-500 mb-4 uppercase tracking-widest leading-relaxed">Bottes + Massage Crânien + Café Focus</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-[#2D5A27]">65 €</span>
+                        <button onclick="openModal('Combo Performance')" class="text-[9px] font-bold uppercase tracking-widest bg-[#2D5A27] text-white px-5 py-2 rounded-full hover:scale-105 transition-all">Optimiser ma pause</button>
+                    </div>
+                </div>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -155,19 +168,19 @@
                     <h4 class="text-2xl font-serif italic mb-8">Bio-Bar <span class="block text-xs not-italic font-sans uppercase tracking-widest text-neutral-400 mt-2">Nootropiques</span></h4>
                     <div class="space-y-6 mb-12">
                         <div class="flex justify-between items-end border-b border-black/5 pb-4">
-                            <div><p class="font-semibold text-sm">Café Focus (Lion's Mane)</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Neuro-plasticité</p></div>
-                            <p class="text-[#8B5A2B] font-bold text-sm">6,50 €</p>
+                            <div><p class="font-semibold text-sm">Cafés & Lattes "Focus"</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter italic">Spécialité + Lion's Mane</p></div>
+                            <p class="text-[#8B5A2B] font-bold text-sm">5,50 €+</p>
                         </div>
                         <div class="flex justify-between items-end border-b border-black/5 pb-4">
-                            <div><p class="font-semibold text-sm">Latte Ashwagandha</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Équilibre Cortisol</p></div>
-                            <p class="text-[#8B5A2B] font-bold text-sm">7,50 €</p>
+                            <div><p class="font-semibold text-sm">Élixirs Récupération</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter italic">Collagène, Curcuma</p></div>
+                            <p class="text-[#8B5A2B] font-bold text-sm">6,50 €</p>
                         </div>
                         <div class="flex justify-between items-end">
-                            <div><p class="font-semibold text-sm">Shot Collagène & MCT</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Énergie Cellulaire</p></div>
-                            <p class="text-[#8B5A2B] font-bold text-sm">5,00 €</p>
+                            <div><p class="font-semibold text-sm">Bio-Snacking</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter italic">Energy Balls Keto</p></div>
+                            <p class="text-[#8B5A2B] font-bold text-sm">4,00 €+</p>
                         </div>
                     </div>
-                    <button onclick="openModal('Menu')" class="w-full py-4 rounded-2xl bg-black text-white text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-[#8B5A2B] transition-all">Consulter la carte</button>
+                    <button onclick="openModal('Menu Bar')" class="w-full py-4 rounded-2xl bg-black text-white text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-[#8B5A2B] transition-all">Consulter la carte</button>
                 </div>
 
                 <!-- RECOVERY LAB -->
@@ -178,19 +191,19 @@
                     <h4 class="text-2xl font-serif italic mb-8">Recovery Lab <span class="block text-xs not-italic font-sans uppercase tracking-widest text-white/30 mt-2">Bio-Tech</span></h4>
                     <div class="space-y-6 mb-12">
                         <div class="flex justify-between items-end border-b border-white/10 pb-4">
-                            <div><p class="font-semibold text-sm text-white">Cryo Localisée</p><p class="text-[10px] text-white/40 uppercase tracking-tighter">Récupération Flash</p></div>
+                            <div><p class="font-semibold text-sm text-white">Cryo Localisée</p><p class="text-[10px] text-white/40 uppercase tracking-tighter italic">Ciblage inflammatoire</p></div>
                             <p class="text-[#A7C957] font-bold text-sm">35 €</p>
                         </div>
                         <div class="flex justify-between items-end border-b border-white/10 pb-4">
-                            <div><p class="font-semibold text-sm text-white">LED Rouge (PBM)</p><p class="text-[10px] text-white/40 uppercase tracking-tighter">Réparation Tissulaire</p></div>
+                            <div><p class="font-semibold text-sm text-white">Lumière Rouge (PBM)</p><p class="text-[10px] text-white/40 uppercase tracking-tighter italic">Régénération cellulaire</p></div>
                             <p class="text-[#A7C957] font-bold text-sm">30 €</p>
                         </div>
                         <div class="flex justify-between items-end">
-                            <div><p class="font-semibold text-sm text-white">Compression Pro</p><p class="text-[10px] text-white/40 uppercase tracking-tighter">Drainage Lymphatique</p></div>
+                            <div><p class="font-semibold text-sm text-white">Compression (Bottes)</p><p class="text-[10px] text-white/40 uppercase tracking-tighter italic">Drainage lymphatique</p></div>
                             <p class="text-[#A7C957] font-bold text-sm">25 €</p>
                         </div>
                     </div>
-                    <button onclick="openModal('Recovery')" class="w-full py-4 rounded-2xl bg-[#2D5A27] text-white text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-[#A7C957] hover:text-[#1A1C1A] transition-all">Réserver un cycle</button>
+                    <button onclick="openModal('Recovery Lab')" class="w-full py-4 rounded-2xl bg-[#2D5A27] text-white text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-[#A7C957] hover:text-[#1A1C1A] transition-all">Réserver une séance</button>
                 </div>
 
                 <!-- MASSAGE -->
@@ -201,42 +214,51 @@
                     <h4 class="text-2xl font-serif italic mb-8">Massage Studio <span class="block text-xs not-italic font-sans uppercase tracking-widest text-neutral-400 mt-2">Expertise</span></h4>
                     <div class="space-y-6 mb-12">
                         <div class="flex justify-between items-end border-b border-black/5 pb-4">
-                            <div><p class="font-semibold text-sm">Deep Focus (30min)</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Libération Crânienne</p></div>
+                            <div><p class="font-semibold text-sm">Deep Focus (30min)</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter italic">Crânien & Anti-écrans</p></div>
                             <p class="text-[#1A1C1A] font-bold text-sm">45 €</p>
                         </div>
                         <div class="flex justify-between items-end border-b border-black/5 pb-4">
-                            <div><p class="font-semibold text-sm">Bio-Recovery (50min)</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Drainage & Tonus</p></div>
+                            <div><p class="font-semibold text-sm">Bio-Recovery (50min)</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter italic">Deep Tissue & Toxines</p></div>
                             <p class="text-[#1A1C1A] font-bold text-sm">85 €</p>
                         </div>
                         <div class="flex justify-between items-end">
-                            <div><p class="font-semibold text-sm">L'Expérience Peak</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter">Full Body + Tech + Café</p></div>
-                            <p class="text-[#2D5A27] font-bold text-sm">115 €</p>
+                            <div><p class="font-semibold text-sm">Option "Bio-Huile"</p><p class="text-[10px] text-neutral-500 uppercase tracking-tighter italic">Enrichie au CBD</p></div>
+                            <p class="text-[#2D5A27] font-bold text-sm">+5 €</p>
                         </div>
                     </div>
-                    <button onclick="openModal('Massage')" class="w-full py-4 rounded-2xl border border-black/10 text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all">Prendre RDV</button>
+                    <button onclick="openModal('Massage Studio')" class="w-full py-4 rounded-2xl border border-black/10 text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all">Prendre RDV</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Lab & Bar Discovery (Thematic Visuals) -->
+    <!-- Lab & Bar Discovery (VEO VIDEO GENERATION) -->
     <section id="lab" class="py-40 px-8 lg:px-24 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-32">
         <div class="space-y-12">
             <h2 class="text-5xl font-serif mb-8 italic">La Science du Peak.</h2>
             <p class="text-neutral-500 text-lg leading-relaxed font-light">
-                Chaque protocole du Lab est validé par des données. Nous utilisons la cryothérapie et la photobiomodulation pour réduire l'inflammation et accélérer votre temps de récupération.
+                Entrez dans une dimension où la technologie répare vos cellules. Une expérience visuelle et sensorielle unique à Bordeaux.
             </p>
-            <div id="lab-image" class="image-container rounded-[3.5rem] aspect-[4/3] border border-black/5 shadow-xl" data-prompt="Luxury biohacking laboratory interior, futuristic cryotherapy chamber, elegant minimal design, soft lighting, bordeaux style.">
+            <div id="lab-video-container" class="media-container rounded-[3.5rem] aspect-[4/3] border border-black/5 shadow-xl group cursor-pointer overflow-hidden">
                 <div class="loading-shimmer absolute inset-0"></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-center z-10 bg-black/10">
+                    <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-white mb-4 animate-pulse-slow">Cinématique Veo en cours de rendu...</p>
+                    <p id="lab-loading-msg" class="text-[8px] uppercase tracking-widest text-white/50 italic">Initialisation du moteur de particules...</p>
+                </div>
             </div>
         </div>
+        
         <div class="space-y-12 md:mt-48">
             <h2 class="text-5xl font-serif mb-8 italic">L'Art du Beans.</h2>
             <p class="text-neutral-500 text-lg leading-relaxed font-light">
-                Un café de spécialité torréfié pour la clarté. Nos baristas infusent chaque tasse avec des adaptogènes pour éliminer les pics d'anxiété et offrir une concentration linéaire.
+                Plus qu'un café, un rituel de performance. Observez la fusion des nootropiques dans votre tasse quotidienne.
             </p>
-            <div id="bar-image" class="image-container rounded-[3.5rem] aspect-[4/3] border border-black/5 shadow-xl" data-prompt="Premium specialty coffee latte art with lion's mane mushroom design, luxury ceramic cup, minimalist bordeaux cafe background.">
+            <div id="bar-video-container" class="media-container rounded-[3.5rem] aspect-[4/3] border border-black/5 shadow-xl group cursor-pointer overflow-hidden">
                 <div class="loading-shimmer absolute inset-0"></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-center z-10 bg-black/10">
+                    <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-white mb-4 animate-pulse-slow">Synthèse vidéo en cours...</p>
+                    <p id="bar-loading-msg" class="text-[8px] uppercase tracking-widest text-white/50 italic">Extraction de l'essence de caféine...</p>
+                </div>
             </div>
         </div>
     </section>
@@ -245,29 +267,30 @@
     <section id="abonnements" class="py-40 px-8 lg:px-24 bg-[#1A1C1A]/5">
         <div class="max-w-7xl mx-auto text-center">
             <span class="text-[10px] font-bold tracking-[0.5em] text-[#8B5A2B] uppercase mb-8 block">Le Cercle Peak & Beans</span>
-            <h3 class="text-6xl font-serif italic mb-24">Adhésions.</h3>
+            <h3 class="text-6xl font-serif italic mb-24">Adhésions Mensuelles.</h3>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- FOCUS -->
                 <div class="p-12 rounded-[3.5rem] bg-white border border-black/5 flex flex-col items-center card-hover transition-all">
                     <h5 class="text-[9px] font-bold uppercase tracking-widest mb-6 text-neutral-400">Pass Focus</h5>
                     <div class="text-5xl font-serif italic mb-10">79€ <span class="text-[10px] not-italic text-neutral-400">/mois</span></div>
-                    <ul class="text-neutral-600 text-xs space-y-5 mb-12 flex-grow text-left w-full pl-6 border-l border-[#8B5A2B]/20">
-                        <li>• 1 Boisson Nootropique / jour</li>
-                        <li>• 2 Sessions Recovery Lab / mois</li>
+                    <ul class="text-neutral-600 text-[11px] space-y-5 mb-12 flex-grow text-left w-full pl-6 border-l border-[#8B5A2B]/20">
+                        <li>• 1 Café Nootropique / jour</li>
+                        <li>• 2 séances Tech au choix / mois</li>
                         <li>• Accès aux évènements Darwin</li>
                     </ul>
-                    <button onclick="openModal('Pass Focus')" class="w-full py-5 rounded-2xl border border-black/10 text-[9px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Rejoindre</button>
+                    <button onclick="openModal('Pass Focus')" class="w-full py-5 rounded-2xl border border-black/10 text-[9px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Souscrire</button>
                 </div>
 
-                <!-- BIO-HACKER (Featured) -->
+                <!-- BIO-HACKER -->
                 <div class="p-12 rounded-[4rem] bg-[#2D5A27] text-white flex flex-col items-center relative scale-105 shadow-2xl shadow-[#2D5A27]/30 z-10">
-                    <div class="absolute -top-4 bg-[#8B5A2B] text-white text-[7px] font-black px-6 py-2 rounded-full tracking-[0.3em] uppercase">Le plus convoité</div>
+                    <div class="absolute -top-4 bg-[#8B5A2B] text-white text-[7px] font-black px-6 py-2 rounded-full tracking-[0.3em] uppercase">Rentabilité Maximale</div>
                     <h5 class="text-[9px] font-bold uppercase tracking-widest mb-6 text-white/40">Pass Bio-Hacker</h5>
                     <div class="text-5xl font-serif italic mb-10">149€ <span class="text-[10px] not-italic text-white/30">/mois</span></div>
-                    <ul class="text-white/80 text-xs space-y-5 mb-12 flex-grow text-left w-full pl-6 border-l border-white/20">
+                    <ul class="text-white/80 text-[11px] space-y-5 mb-12 flex-grow text-left w-full pl-6 border-l border-white/20">
                         <li class="text-white font-bold">• Recovery Lab en ILLIMITÉ</li>
-                        <li>• -15% sur toute la carte Bar</li>
+                        <li>• -10% sur toute la carte Bar</li>
+                        <li>• -10% sur les Massages</li>
                         <li>• Conciergerie Santé Peak</li>
                     </ul>
                     <button onclick="openModal('Pass Bio-Hacker')" class="w-full py-5 rounded-2xl bg-white text-[#2D5A27] text-[9px] font-bold uppercase tracking-widest hover:bg-[#F7F5F2] transition-all">Souscrire</button>
@@ -277,14 +300,17 @@
                 <div class="p-12 rounded-[3.5rem] bg-white border border-black/5 flex flex-col items-center card-hover transition-all">
                     <h5 class="text-[9px] font-bold uppercase tracking-widest mb-6 text-neutral-400">Total Peak</h5>
                     <div class="text-5xl font-serif italic mb-10">229€ <span class="text-[10px] not-italic text-neutral-400">/mois</span></div>
-                    <ul class="text-neutral-600 text-xs space-y-5 mb-12 flex-grow text-left w-full pl-6 border-l border-[#2D5A27]/20">
-                        <li>• Illimité Recovery Lab</li>
-                        <li>• 1 Soin Massage Bio-Recovery / mois</li>
-                        <li>• Boisson Signature Quotidienne</li>
+                    <ul class="text-neutral-600 text-[11px] space-y-5 mb-12 flex-grow text-left w-full pl-6 border-l border-[#2D5A27]/20">
+                        <li>• Illimité Tech (Cryo/LED/Bottes)</li>
+                        <li>• 1 Massage Crânien / mois</li>
+                        <li>• 1 Boisson Signature / jour</li>
+                        <li>• Invitations VIP Labs</li>
                     </ul>
-                    <button onclick="openModal('Pass Total Peak')" class="w-full py-5 rounded-2xl border border-black/10 text-[9px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Rejoindre</button>
+                    <button onclick="openModal('Pass Total Peak')" class="w-full py-5 rounded-2xl border border-black/10 text-[9px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Souscrire</button>
                 </div>
             </div>
+            
+            <p class="mt-16 text-[9px] uppercase tracking-[0.4em] text-neutral-400">Pour les entreprises (5+ salariés) : <a href="#" onclick="openModal('Pack Team Darwin')" class="text-[#2D5A27] font-bold underline">Demander le devis Team Darwin</a></p>
         </div>
     </section>
 
@@ -300,14 +326,6 @@
             <h4 class="font-serif italic text-4xl mb-4">Peak <span class="text-[#8B5A2B]">&</span> Beans</h4>
             <p class="text-[10px] text-[#2D5A27] font-bold tracking-[0.6em] uppercase italic">Cultivez votre énergie</p>
         </div>
-        
-        <div class="flex flex-wrap justify-center gap-12 text-[9px] font-bold uppercase tracking-widest text-neutral-400 mb-20">
-            <a href="#" onclick="openModal('Franchise')" class="hover:text-black">Franchise</a>
-            <a href="#" onclick="openModal('Investir')" class="hover:text-black">Investissement</a>
-            <a href="#" onclick="openModal('Presse')" class="hover:text-black">Presse</a>
-            <a href="#" onclick="openModal('Contact')" class="hover:text-black">Contact</a>
-        </div>
-        
         <p class="text-[7px] text-neutral-300 tracking-[0.2em] uppercase">BORDEAUX • DARWIN ECO-SYSTÈME • 2025 ALL RIGHTS RESERVED</p>
     </footer>
 
@@ -317,22 +335,15 @@
         <div class="relative bg-white w-full max-w-xl rounded-[4rem] shadow-2xl overflow-hidden p-12 md:p-16 border border-black/5">
             <button onclick="closeModal()" class="absolute top-8 right-8 text-neutral-300 hover:text-black">✕</button>
             <div id="modal-content">
-                <span class="text-[10px] font-bold tracking-[0.5em] uppercase text-[#2D5A27] mb-6 block">Demande d'informations</span>
+                <span class="text-[10px] font-bold tracking-[0.5em] uppercase text-[#2D5A27] mb-6 block">Demande de réservation</span>
                 <h3 id="modal-title" class="text-4xl font-serif italic mb-10 leading-tight">Commençons votre <br/>ascension.</h3>
                 <form onsubmit="handleModalSubmit(event)" class="space-y-6">
+                    <input id="modal-service-name" type="hidden" value="Contact Général">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <input required type="text" placeholder="Prénom Nom" class="w-full bg-[#F7F5F2] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all text-sm">
                         <input required type="email" placeholder="Email professionnel" class="w-full bg-[#F7F5F2] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all text-sm">
                     </div>
-                    <select id="modal-select" class="w-full bg-[#F7F5F2] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all text-sm">
-                        <option>Franchise Peak & Beans</option>
-                        <option>Pass Bio-Hacker (149€/mois)</option>
-                        <option>Expérience Recovery Lab</option>
-                        <option>Studio Massage Expertise</option>
-                        <option>Opportunité d'Investissement</option>
-                    </select>
-                    <textarea placeholder="Votre message ou vos objectifs de santé..." class="w-full bg-[#F7F5F2] border border-black/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#2D5A27] transition-all h-32 text-sm"></textarea>
-                    <button id="modal-submit-btn" class="w-full bg-black text-white font-bold py-6 rounded-2xl uppercase text-[10px] tracking-[0.4em] hover:bg-[#2D5A27] transition-all shadow-xl">Envoyer la demande</button>
+                    <button id="modal-submit-btn" class="w-full bg-black text-white font-bold py-6 rounded-2xl uppercase text-[10px] tracking-[0.4em] hover:bg-[#2D5A27] transition-all shadow-xl">Valider la sélection</button>
                 </form>
             </div>
         </div>
@@ -343,112 +354,116 @@
 
         const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-        async function fetchImage(prompt, maxRetries = 2) {
-            let attempt = 0;
-            while (attempt <= maxRetries) {
-                try {
-                    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-                    const response = await ai.models.generateContent({
-                        model: 'gemini-2.5-flash-image',
-                        contents: { parts: [{ text: `High-end brand photography: ${prompt}. Cinematic lighting, professional architectural digest style, luxury materials, bordeaux aesthetic.` }] },
-                        config: { imageConfig: { aspectRatio: "16:9" } },
-                    });
-
-                    for (const part of response.candidates[0].content.parts) {
-                        if (part.inlineData) {
-                            return `data:image/png;base64,${part.inlineData.data}`;
-                        }
-                    }
-                } catch (error) {
-                    if (error.message?.includes("429") || error.message?.includes("RESOURCE_EXHAUSTED")) {
-                        attempt++;
-                        if (attempt <= maxRetries) {
-                            await delay(Math.pow(2, attempt) * 2000 + Math.random() * 1000);
-                            continue;
-                        }
-                    }
-                    console.error("Gemini Image Error:", error);
-                    return null;
+        async function fetchImage(prompt) {
+            try {
+                const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+                const response = await ai.models.generateContent({
+                    model: 'gemini-2.5-flash-image',
+                    contents: { parts: [{ text: `Professional architectural brand photography for Peak & Beans: ${prompt}. Cinematic warm lighting, minimalist luxury, 8k resolution.` }] },
+                    config: { imageConfig: { aspectRatio: "16:9" } },
+                });
+                for (const part of response.candidates[0].content.parts) {
+                    if (part.inlineData) return `data:image/png;base64,${part.inlineData.data}`;
                 }
+            } catch (error) {
+                console.error("Hero Image Error:", error);
+                return null;
             }
-            return null;
         }
 
-        async function initImages() {
-            // Load Hero
+        async function fetchVideo(prompt, loadingMsgElementId) {
+            const messages = [
+                "Analyse des paramètres de performance...",
+                "Optimisation du flux bio-cellulaire...",
+                "Rendu des textures organiques...",
+                "Finalisation de l'expérience cinématique...",
+                "Traitement des couches de lumière..."
+            ];
+            
+            let msgIndex = 0;
+            const msgTimer = setInterval(() => {
+                const el = document.getElementById(loadingMsgElementId);
+                if (el) el.innerText = messages[msgIndex % messages.length];
+                msgIndex++;
+            }, 8000);
+
+            try {
+                const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+                let operation = await ai.models.generateVideos({
+                    model: 'veo-3.1-fast-generate-preview',
+                    prompt: `Cinematic high-end advertising video for Peak & Beans: ${prompt}. Smooth camera movement, elegant high resolution, Bordeaux style.`,
+                    config: {
+                        numberOfVideos: 1,
+                        resolution: '720p',
+                        aspectRatio: '16:9'
+                    }
+                });
+
+                while (!operation.done) {
+                    await delay(10000);
+                    operation = await ai.operations.getVideosOperation({ operation: operation });
+                }
+
+                clearInterval(msgTimer);
+                const downloadLink = operation.response?.generatedVideos?.[0]?.video?.uri;
+                if (!downloadLink) return null;
+
+                const response = await fetch(`${downloadLink}&key=${process.env.API_KEY}`);
+                const blob = await response.blob();
+                return URL.createObjectURL(blob);
+            } catch (error) {
+                clearInterval(msgTimer);
+                console.error("Video Generation Error:", error);
+                return null;
+            }
+        }
+
+        async function initApp() {
+            // 1. Hero Image
             const heroContainer = document.getElementById('hero-image');
-            const heroUrl = await fetchImage("A futuristic high-end interior of Peak & Beans in Bordeaux Darwin ecosystem, merging specialty coffee bar with sleek bio-hacking equipment, warm natural lighting, minimalist luxury.");
+            const heroUrl = await fetchImage("Interior of a high-end luxury biohacking café in Bordeaux Darwin, sleek specialty coffee bar, green and wood textures, morning sun, 8k resolution.");
             if (heroUrl) {
                 heroContainer.innerHTML = `<img src="${heroUrl}" class="w-full h-full object-cover animate-in fade-in duration-1000" alt="Hero">`;
-            } else {
-                heroContainer.innerHTML = `<div class="p-20 text-center opacity-50 uppercase tracking-[0.5em] text-[10px]">Peak & Beans Experience</div>`;
             }
 
-            await delay(2000);
-
-            // Load Lab
-            const labContainer = document.getElementById('lab-image');
-            const labUrl = await fetchImage(labContainer.dataset.prompt);
-            if (labUrl) {
-                labContainer.innerHTML = `<img src="${labUrl}" class="w-full h-full object-cover animate-in fade-in duration-1000" alt="Lab">`;
+            // 2. Video Generations
+            const labVideoContainer = document.getElementById('lab-video-container');
+            const labVideoUrl = await fetchVideo("High-tech recovery lab interior with glowing red light panels and a cryotherapy machine emitting cold mist, ultra clean design.", "lab-loading-msg");
+            if (labVideoUrl) {
+                labVideoContainer.innerHTML = `
+                    <video src="${labVideoUrl}" class="w-full h-full object-cover" autoplay loop muted playsinline></video>
+                    <div class="absolute inset-0 video-overlay"></div>
+                `;
             }
 
-            await delay(2000);
-
-            // Load Bar
-            const barContainer = document.getElementById('bar-image');
-            const barUrl = await fetchImage(barContainer.dataset.prompt);
-            if (barUrl) {
-                barContainer.innerHTML = `<img src="${barUrl}" class="w-full h-full object-cover animate-in fade-in duration-1000" alt="Bar">`;
+            const barVideoContainer = document.getElementById('bar-video-container');
+            const barVideoUrl = await fetchVideo("Macro shot of a high-end specialty coffee being prepared with white latte art in a premium ceramic cup, soft steam rising.", "bar-loading-msg");
+            if (barVideoUrl) {
+                barVideoContainer.innerHTML = `
+                    <video src="${barVideoUrl}" class="w-full h-full object-cover" autoplay loop muted playsinline></video>
+                    <div class="absolute inset-0 video-overlay"></div>
+                `;
             }
         }
 
-        // Modal Logic
-        window.openModal = function(subject) {
-            const modal = document.getElementById('booking-modal');
-            const select = document.getElementById('modal-select');
-            if (select) {
-                for(let opt of select.options) {
-                    if (opt.text.toLowerCase().includes(subject.toLowerCase())) {
-                        select.value = opt.text;
-                        break;
-                    }
-                }
-            }
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+        window.openModal = (subject) => {
+            document.getElementById('modal-title').innerText = subject;
+            document.getElementById('modal-service-name').value = subject;
+            document.getElementById('booking-modal').classList.replace('hidden', 'flex');
             document.body.style.overflow = 'hidden';
         };
-
-        window.closeModal = function() {
-            const modal = document.getElementById('booking-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+        window.closeModal = () => {
+            document.getElementById('booking-modal').classList.replace('flex', 'hidden');
             document.body.style.overflow = 'auto';
         };
-
-        window.handleModalSubmit = function(e) {
+        window.handleModalSubmit = (e) => {
             e.preventDefault();
-            const btn = document.getElementById('modal-submit-btn');
+            const service = document.getElementById('modal-service-name').value;
             const content = document.getElementById('modal-content');
-            btn.innerText = "Traitement...";
-            btn.disabled = true;
-
-            setTimeout(() => {
-                content.innerHTML = `
-                    <div class="text-center py-12">
-                        <div class="w-20 h-20 bg-[#2D5A27]/5 text-[#2D5A27] rounded-full flex items-center justify-center mx-auto mb-10">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </div>
-                        <h3 class="text-4xl font-serif italic mb-6">Demande enregistrée.</h3>
-                        <p class="text-neutral-500 font-light mb-12 italic">Nous revenons vers vous prochainement.</p>
-                        <button onclick="closeModal()" class="bg-black text-white px-16 py-5 rounded-2xl uppercase text-[10px] font-bold tracking-widest">Fermer</button>
-                    </div>
-                `;
-            }, 1000);
+            content.innerHTML = `<div class="text-center py-20"><p class="text-2xl font-serif italic mb-4">Demande confirmée.</p><p class="text-[10px] uppercase tracking-widest text-neutral-400">Votre accès pour "${service}" est en cours de traitement.</p><button onclick="closeModal()" class="mt-12 text-[10px] font-bold uppercase underline">Fermer</button></div>`;
         };
 
-        document.addEventListener('DOMContentLoaded', initImages);
+        document.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
 </html>
