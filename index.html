@@ -23,7 +23,7 @@
         .font-serif { font-family: 'Playfair Display', serif; }
         
         .glass-panel {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
@@ -47,20 +47,23 @@
             position: relative;
             overflow: hidden;
             border-radius: 4rem;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            background: linear-gradient(145deg, #e5e1da, #f0ede8);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.02);
         }
 
-        .media-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
+        /* Scanning effect to simulate "Bio-hacking" / High-tech lab */
+        .scanline {
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(to right, transparent, var(--glow), transparent);
+            opacity: 0.2;
+            animation: scan 6s linear infinite;
         }
-
-        .media-container:hover img {
-            transform: scale(1.02);
-        }
+        @keyframes scan { 0% { top: 0% } 100% { top: 100% } }
 
         .service-card {
             transition: all 0.4s ease;
@@ -68,7 +71,7 @@
         }
         .service-card:hover {
             background: white;
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: var(--glow);
         }
 
@@ -89,19 +92,17 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 px-10 py-5 flex justify-between items-center bg-white/90 backdrop-blur-xl border-b border-black/5">
         <div class="flex items-center space-x-4">
-            <!-- LOGO PEAK & BEANS SVG -->
+            <!-- LOGO PEAK & BEANS SVG (RECONSTRUIT) -->
             <svg width="45" height="45" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M256 60L420 380H92L256 60Z" stroke="#1A3C15" stroke-width="12" stroke-linejoin="round"/>
                 <path d="M256 60L330 240L256 180L182 240L256 60Z" fill="#1A3C15"/>
                 <ellipse cx="210" cy="380" rx="20" ry="12" fill="#724926" transform="rotate(-30 210 380)"/>
                 <ellipse cx="256" cy="405" rx="22" ry="14" fill="#724926" transform="rotate(10 256 405)"/>
                 <ellipse cx="302" cy="378" rx="20" ry="12" fill="#724926" transform="rotate(40 302 378)"/>
-                <circle cx="170" cy="390" r="12" fill="#724926"/>
-                <circle cx="340" cy="400" r="10" fill="#724926"/>
             </svg>
             <div class="flex flex-col">
-                <span class="font-serif font-bold text-2xl tracking-tight uppercase leading-none">Peak <span class="text-[#724926]">&</span> Beans</span>
-                <span class="text-[8px] font-bold tracking-[0.4em] uppercase text-[#1A3C15] mt-1 italic">Cultivez votre énergie</span>
+                <span class="font-serif font-bold text-xl tracking-tight uppercase leading-none">Peak <span class="text-[#724926]">&</span> Beans</span>
+                <span class="text-[7px] font-bold tracking-[0.4em] uppercase text-[#1A3C15] mt-1 italic">Cultivez votre énergie</span>
             </div>
         </div>
         <div class="hidden lg:flex space-x-12 text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-500">
@@ -129,16 +130,18 @@
             L'alliance ultime du bio-hacking et de la caféine. Un sanctuaire dédié à la longévité au cœur de Darwin.
         </p>
 
-        <!-- PHOTO 3: VISION GLOBALE -->
-        <div class="media-container w-full aspect-[21/10] shadow-2xl group">
-            <img src="https://storage.googleapis.com/pai-images/91448b3b64c44a04918e7e9a8f4c718a.jpeg" 
-                 alt="Peak & Beans Darwin Global View"
-                 onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=2047'">
-            <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-all duration-700"></div>
+        <!-- CONTENEUR ABSTRAIT AU LIEU DE L'IMAGE 3 -->
+        <div class="media-container w-full aspect-[21/10] shadow-2xl">
+            <div class="scanline"></div>
+            <div class="flex flex-col items-center opacity-10">
+                <svg width="120" height="120" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M256 60L420 380H92L256 60Z" stroke="black" stroke-width="4"/>
+                </svg>
+            </div>
         </div>
     </header>
 
-    <!-- Pricing / Services -->
+    <!-- Pricing Section -->
     <section id="tarifs" class="py-32 px-8 lg:px-24">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
@@ -146,6 +149,7 @@
                     <span class="text-[10px] font-bold tracking-[0.5em] text-[#724926] uppercase mb-4 block">L'Art de la Performance</span>
                     <h2 class="text-6xl font-serif italic leading-tight text-[#1A1C1A]">Bio-Bar & <br/>Recovery.</h2>
                 </div>
+                <!-- Best Seller Highlight -->
                 <div class="bg-white/80 border border-[#A7C957]/30 p-8 rounded-[3rem] max-w-sm glass-panel shadow-xl">
                     <span class="text-[8px] font-black uppercase tracking-[0.3em] bg-[#A7C957] text-[#1A3C15] px-3 py-1 rounded-full mb-4 inline-block">Best-Seller</span>
                     <h4 class="font-serif italic text-2xl mb-2">Combo Performance</h4>
@@ -158,12 +162,13 @@
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                <!-- BIO-BAR -->
+                <!-- 1. BIO-BAR -->
                 <div class="service-card p-12 rounded-[3.5rem] flex flex-col glass-panel border-l-4 border-l-[#724926]/20">
                     <div class="text-[#724926] mb-8 bg-[#724926]/5 w-14 h-14 flex items-center justify-center rounded-2xl">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/></svg>
                     </div>
-                    <h4 class="text-2xl font-serif italic mb-8">Bio-Bar <span class="block text-[10px] not-italic font-sans uppercase tracking-widest text-neutral-400 mt-2">Nootropiques & Focus</span></h4>
+                    <h4 class="text-2xl font-serif italic mb-2">1. Le Bio-Bar</h4>
+                    <span class="text-[10px] uppercase tracking-widest text-neutral-400 mb-10 block">Nootropiques & Focus</span>
                     <div class="space-y-6 mb-12 flex-grow">
                         <div class="flex justify-between items-end border-b border-black/5 pb-4">
                             <div><p class="font-semibold text-sm">Cafés & Lattes "Focus"</p><p class="text-[10px] text-neutral-500 italic">Lion's Mane & Adaptogènes</p></div>
@@ -181,15 +186,16 @@
                     <button onclick="openModal('Menu Bar')" class="w-full py-4 rounded-2xl bg-black text-white text-[9px] font-bold uppercase tracking-widest hover:bg-[#724926] transition-all">Consulter la carte</button>
                 </div>
 
-                <!-- RECOVERY LAB -->
+                <!-- 2. RECOVERY LAB -->
                 <div class="service-card p-12 rounded-[3.5rem] flex flex-col bg-[#0F110F] text-white shadow-2xl border-l-4 border-l-[#A7C957]">
                     <div class="text-[#A7C957] mb-8 bg-[#A7C957]/10 w-14 h-14 flex items-center justify-center rounded-2xl">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20M5 5l14 14"/></svg>
                     </div>
-                    <h4 class="text-2xl font-serif italic mb-8">Recovery Lab <span class="block text-[10px] not-italic font-sans uppercase tracking-widest text-white/30 mt-2">Technologies Bio-Hack</span></h4>
+                    <h4 class="text-2xl font-serif italic mb-2">2. Recovery Lab</h4>
+                    <span class="text-[10px] uppercase tracking-widest text-white/30 mb-10 block">Technologies Bio-Hack</span>
                     <div class="space-y-6 mb-12 flex-grow">
                         <div class="flex justify-between items-end border-b border-white/10 pb-4">
-                            <div><p class="font-semibold text-sm">Cryothérapie Localisée</p><p class="text-[10px] text-white/40 italic">Inflammations & Récupération</p></div>
+                            <div><p class="font-semibold text-sm">Cryothérapie Localisée</p><p class="text-[10px] text-white/40 italic">Froid Intense & Récupération</p></div>
                             <p class="font-bold text-[#A7C957]">35 €</p>
                         </div>
                         <div class="flex justify-between items-end border-b border-white/10 pb-4">
@@ -204,24 +210,25 @@
                     <button onclick="openModal('Recovery Lab')" class="w-full py-4 rounded-2xl bg-[#1A3C15] text-[#A7C957] text-[9px] font-bold uppercase tracking-widest hover:bg-[#A7C957] hover:text-[#0F110F] transition-all">Réserver une séance</button>
                 </div>
 
-                <!-- MASSAGE -->
+                <!-- 3. STUDIO MASSAGE -->
                 <div class="service-card p-12 rounded-[3.5rem] flex flex-col glass-panel border-l-4 border-l-[#1A3C15]/20">
                     <div class="text-[#1A3C15] mb-8 bg-[#1A3C15]/5 w-14 h-14 flex items-center justify-center rounded-2xl">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
                     </div>
-                    <h4 class="text-2xl font-serif italic mb-8">Massage Studio <span class="block text-[10px] not-italic font-sans uppercase tracking-widest text-neutral-400 mt-2">Bien-être Cellulaire</span></h4>
+                    <h4 class="text-2xl font-serif italic mb-2">3. Studio Massage</h4>
+                    <span class="text-[10px] uppercase tracking-widest text-neutral-400 mb-10 block">Bien-être Cellulaire</span>
                     <div class="space-y-6 mb-12 flex-grow">
                         <div class="flex justify-between items-end border-b border-black/5 pb-4">
                             <div><p class="font-semibold text-sm">Deep Focus (30min)</p><p class="text-[10px] text-neutral-500 italic">Crânien & Anti-écrans</p></div>
-                            <p class="font-bold">45 €</p>
+                            <p class="font-bold text-sm">45 €</p>
                         </div>
                         <div class="flex justify-between items-end border-b border-black/5 pb-4">
                             <div><p class="font-semibold text-sm">Bio-Recovery (50min)</p><p class="text-[10px] text-neutral-500 italic">Deep Tissue & Détox</p></div>
-                            <p class="font-bold">85 €</p>
+                            <p class="font-bold text-sm">85 €</p>
                         </div>
                         <div class="flex justify-between items-end">
                             <div><p class="font-semibold text-sm">Option Bio-Huile</p><p class="text-[10px] text-neutral-500 italic">Infusion CBD Premium</p></div>
-                            <p class="text-[#1A3C15] font-bold">+5 €</p>
+                            <p class="text-[#1A1C15] font-bold text-sm">+5 €</p>
                         </div>
                     </div>
                     <button onclick="openModal('RDV Massage')" class="w-full py-4 rounded-2xl border border-black/10 text-[9px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Prendre RDV</button>
@@ -230,19 +237,17 @@
         </div>
     </section>
 
-    <!-- Lab & Bar Experience -->
+    <!-- Lab & Bar Experience (Abstrait) -->
     <section id="lab" class="py-40 px-8 lg:px-24 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-32">
         <div class="space-y-12">
             <h2 class="text-5xl font-serif mb-8 italic">Le Lab de Récupération.</h2>
             <p class="text-neutral-500 text-lg leading-relaxed font-light">
-                Une technologie de pointe pour la maintenance de votre capital santé. Ambiance zen et protocoles cliniques dans un cadre chaleureux.
+                Une technologie de pointe pour la maintenance de votre capital santé. Un espace de silence et de régénération.
             </p>
-            <!-- PHOTO 2: RECOVERY LAB -->
-            <div class="media-container aspect-[4/3] group shadow-xl">
-                <img src="https://storage.googleapis.com/pai-images/f773663e80064f519576f343a4199999.jpeg" 
-                     alt="Recovery Lab Bio-hacking"
-                     onerror="this.src='https://images.unsplash.com/photo-1576091160550-2173bdd9962a?auto=format&fit=crop&q=80&w=2070'">
-                <div class="absolute inset-0 bg-black/10"></div>
+            <!-- CONTENEUR ABSTRAIT AU LIEU DE L'IMAGE 2 -->
+            <div class="media-container aspect-square shadow-xl">
+                <div class="scanline"></div>
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" class="opacity-10"><path d="M12 2v20M2 12h20M5 5l14 14"/></svg>
             </div>
         </div>
         
@@ -251,12 +256,9 @@
             <p class="text-neutral-500 text-lg leading-relaxed font-light">
                 Un rituel de performance au quotidien. Nous infusons la science dans chaque tasse pour une clarté mentale absolue.
             </p>
-            <!-- PHOTO 1: BIO BAR INTERIOR -->
-            <div class="media-container aspect-[4/3] group shadow-xl">
-                <img src="https://storage.googleapis.com/pai-images/6548a3d4638a4a5099388f8c8f4c718a.jpeg" 
-                     alt="Bio Bar Nootropic Ritual"
-                     onerror="this.src='https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=2078'">
-                <div class="absolute inset-0 bg-black/10"></div>
+            <!-- CONTENEUR ABSTRAIT AU LIEU DE L'IMAGE 1 -->
+            <div class="media-container aspect-square shadow-xl">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" class="opacity-10"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/></svg>
             </div>
         </div>
     </section>
@@ -281,7 +283,7 @@
 
                 <!-- BIO-HACKER -->
                 <div class="p-14 rounded-[4.5rem] bg-[#0F110F] text-white flex flex-col items-center relative scale-105 shadow-3xl z-10 border border-white/5">
-                    <div class="absolute -top-4 bg-[#A7C957] text-[#1A3C15] text-[8px] font-black px-8 py-2 rounded-full tracking-widest uppercase shadow-lg">Optimal</div>
+                    <div class="absolute -top-4 bg-[#A7C957] text-[#1A1C15] text-[8px] font-black px-8 py-2.5 rounded-full tracking-widest uppercase shadow-lg">Optimal</div>
                     <h5 class="text-[10px] font-bold uppercase tracking-widest mb-8 text-white/40">Pass Bio-Hacker</h5>
                     <div class="text-6xl font-serif italic mb-10 text-[#A7C957]">149€ <span class="text-[11px] not-italic text-white/30">/mois</span></div>
                     <ul class="text-white/80 text-[12px] space-y-5 mb-12 flex-grow text-left w-full pl-6 border-l border-[#A7C957]/30">
